@@ -17,12 +17,13 @@ A structured knowledge base for preparing for technical writer interviews.
 
 ## Format
 
-Most topics use the same learning structure:
+Most topics are written with English as the primary version. When a topic is bilingual, the English block comes first, followed by the Russian support block.
+
+Each language block uses the same learning structure:
 
 1. **Quick recall** — one or two sentences to refresh the concept.
 2. **Interview answer** — a concise answer suitable for an interview.
 3. **Details** — enough depth to rebuild understanding.
-4. **English** — useful wording for English-language interviews.
 
 ## Goal
 
