@@ -7,7 +7,7 @@ A structured knowledge base for preparing for technical writer interviews.
 - [01 — IT Basics](01-it-basics/README.md)
 - [02 — API and REST](02-api-and-rest/README.md)
 - [03 — Git and GitHub](03-git-and-github/README.md)
-- 04 — Databases *(planned)*
+- [04 — Databases](04-databases/README.md)
 - [05 — Docker and containers](05-docker-and-containers/README.md)
 - 06 — Kubernetes *(planned)*
 - 07 — CI/CD and DevOps *(planned)*
