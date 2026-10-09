@@ -9,12 +9,11 @@ A structured knowledge base for preparing for technical writer interviews.
 - [03 — Git and GitHub](03-git-and-github/README.md)
 - [04 — Databases](04-databases/README.md)
 - [05 — Docker and containers](05-docker-and-containers/README.md)
-- 06 — Kubernetes *(planned)*
-- 07 — CI/CD and DevOps *(planned)*
-- 08 — Docs as Code *(planned)*
-- 09 — Technical writing workflows *(planned)*
-- 10 — Interview questions and practice *(planned)*
-- 
+- [06 — Kubernetes](06-kubernetes/README.md)
+- [07 — CI/CD and DevOps](07-ci-cd-and-devops/README.md)
+- [08 — Docs as Code](08-docs-as-code/README.md)
+- [09 — Technical writing workflows](09-technical-writing-workflows/README.md)
+- [10 — Interview questions and practice](10-interview-questions-and-practice/README.md)
 
 ## Format
 
