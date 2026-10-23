@@ -4,6 +4,8 @@ A starter phrasebook for reading documentation, writing instructions, and explai
 
 Небольшая памятка для чтения документации, написания инструкций и ответов на интервью. Запоминай выражение целиком: с дополнением и предлогом. В каждой строке есть пример и его перевод; примеры составлены для этой памятки.
 
+Companion guide: [Technical English: Common Sentence Patterns](technical-english-patterns.md). Дополнительная памятка: конструкции предложений, типичные ошибки и упражнения с ответами.
+
 ## 1. Files, Data, and Changes / Файлы, данные и изменения
 
 | English expression | Русский смысл | Example / Пример | Usage / Подсказка |
