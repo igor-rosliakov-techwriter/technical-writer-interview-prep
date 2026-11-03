@@ -4,8 +4,8 @@ A cheat sheet on core IT topics for technical writer interviews.
 
 Each question contains two separate language blocks. English is the primary version and comes first:
 
-- 🇬🇧 **English** — quick recall, interview answer, details.
-- 🇷🇺 **Русский** — быстро вспомнить, ответ на собеседовании, подробнее.
+- 🇬🇧 **English** — short interview answer, details.
+- 🇷🇺 **Русский** — короткий ответ на собеседовании, подробнее.
 
 ---
 
@@ -13,13 +13,9 @@ Each question contains two separate language blocks. English is the primary vers
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**Client-server architecture is a model in which a client sends requests and a server processes them and returns responses.**
-
 #### Interview answer
 
-> Client-server architecture is a model where a client, such as a browser or mobile application, sends a request to a server. The server processes the request according to its business logic, may interact with a database or other services, and returns a response to the client.
+> The client requests a service; the server processes the request and returns a result.
 
 #### Details
 
@@ -27,13 +23,9 @@ The client initiates communication; the server provides a service. A client can 
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Клиент-серверная архитектура — это модель, в которой клиент отправляет запросы, а сервер их обрабатывает и возвращает ответы.** Сервер при необходимости обращается к базе данных, API или другим сервисам.
-
 #### Ответ на собеседовании
 
-> Клиент-серверная архитектура — это модель взаимодействия, в которой клиент, например браузер или мобильное приложение, отправляет запрос серверу. Сервер обрабатывает запрос согласно бизнес-логике, при необходимости обращается к базе данных или другим сервисам и возвращает клиенту ответ.
+> Клиент запрашивает услугу; сервер обрабатывает запрос и возвращает результат.
 
 #### Подробнее
 
@@ -45,13 +37,9 @@ The client initiates communication; the server provides a service. A client can 
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**Frontend is the client-side part users interact with. Backend is the server-side part responsible for business logic, request processing, and data.**
-
 #### Interview answer
 
-> Frontend is responsible for the user interface and user interaction. Backend processes requests from the frontend, implements business logic, communicates with databases and other services, and returns the result.
+> Frontend handles the user interface; backend handles server-side logic, permissions, and data processing.
 
 #### Details
 
@@ -59,13 +47,9 @@ For example, the frontend submits form data; the backend validates it, checks pe
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Frontend — клиентская часть приложения, с которой взаимодействует пользователь. Backend — серверная часть, которая отвечает за бизнес-логику, обработку запросов и работу с данными.**
-
 #### Ответ на собеседовании
 
-> Frontend отвечает за пользовательский интерфейс и взаимодействие пользователя с приложением. Backend принимает запросы от frontend, выполняет бизнес-логику, взаимодействует с базами данных и другими сервисами и возвращает результат.
+> Frontend отвечает за интерфейс; backend выполняет серверную логику, проверяет права и обрабатывает данные.
 
 #### Подробнее
 
@@ -77,31 +61,27 @@ For example, the frontend submits form data; the backend validates it, checks pe
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**The browser resolves the server IP using DNS, establishes a connection, performs TLS for HTTPS, sends an HTTP request, receives an HTTP response, and renders the page.**
-
 #### Interview answer
 
-> When a user enters a URL, the browser first determines the server's IP address, usually using DNS. It then establishes a connection to the server and, for HTTPS, establishes a secure TLS connection. The browser sends an HTTP request, the server processes it and returns an HTTP response with a status code, headers, and a body. The browser processes the response and renders the page.
+> The browser resolves the host, establishes a connection, sends an HTTP request, and processes the response. For HTTPS, the connection is protected with TLS.
 
 #### Details
 
-A useful flow to remember is: `URL → DNS → IP → TCP → TLS → HTTP Request → Server → HTTP Response → Browser`.
+For a fresh HTTPS connection over HTTP/1.1 or HTTP/2: `URL → DNS → TCP → TLS → HTTP request → HTTP response → rendering`.
+
+HTTP/3 uses QUIC over UDP with TLS 1.3, not a TCP connection. Cached DNS results, cached responses, and reused connections can skip steps. After receiving HTML, the browser usually requests CSS, scripts, and images; redirects can trigger another request.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Браузер получает IP через DNS, устанавливает соединение, для HTTPS выполняет TLS, отправляет HTTP-запрос, получает HTTP-ответ и отображает страницу.**
-
 #### Ответ на собеседовании
 
-> Когда пользователь вводит URL, браузеру сначала нужно определить IP-адрес сервера. Он проверяет локальные данные и при необходимости обращается к DNS-резолверу. После получения IP устанавливается соединение с сервером, а для HTTPS выполняется TLS handshake. Затем браузер отправляет HTTP-запрос. Сервер его обрабатывает и возвращает HTTP-ответ со статус-кодом, заголовками и телом. Браузер обрабатывает ответ и отображает страницу.
+> Браузер определяет адрес сервера, устанавливает соединение, отправляет HTTP-запрос и обрабатывает ответ. Для HTTPS соединение защищается с помощью TLS.
 
 #### Подробнее
 
-Полезная цепочка: `URL → DNS → IP → TCP → TLS → HTTP Request → Server → HTTP Response → Browser`. После получения HTML браузер обычно делает дополнительные запросы за CSS, JavaScript, изображениями, шрифтами и другими ресурсами.
+Для нового HTTPS-соединения через HTTP/1.1 или HTTP/2: `URL → DNS → TCP → TLS → HTTP-запрос → HTTP-ответ → отображение`.
+
+HTTP/3 использует QUIC поверх UDP с TLS 1.3, а не TCP. Кеш DNS, кеш ответов и повторное использование соединения позволяют пропустить часть шагов. После HTML браузер обычно запрашивает CSS, скрипты и изображения; перенаправление может вызвать новый запрос.
 
 ---
 
@@ -109,31 +89,23 @@ A useful flow to remember is: `URL → DNS → IP → TCP → TLS → HTTP Reque
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**DNS is a distributed hierarchical system that maps domain names to IP addresses.**
-
 #### Interview answer
 
-> DNS is a distributed hierarchical naming system used to resolve domain names to IP addresses. A DNS resolver can return a cached result or query the DNS hierarchy to find the required address.
+> DNS is a distributed naming system. It retrieves records for domain names, including IP addresses.
 
 #### Details
 
-A simplified lookup path is: `Root → TLD → authoritative DNS → DNS record`.
+A simplified recursive lookup is `root → TLD → authoritative server → record`. A/AAAA records contain IP addresses; MX identifies mail servers and TXT contains text. DNS is not limited to website addresses.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**DNS — распределенная иерархическая система, которая сопоставляет доменные имена с IP-адресами.**
-
 #### Ответ на собеседовании
 
-> DNS — это распределенная иерархическая система имен, которая позволяет определить IP-адрес по доменному имени. Обычно клиент обращается к DNS-резолверу, который либо берет результат из кеша, либо получает его через DNS-систему.
+> DNS — распределённая система имён. Она позволяет получать записи домена, в том числе IP-адреса.
 
 #### Подробнее
 
-Упрощенная цепочка: `Root → TLD (.com, .ru) → authoritative DNS → нужная DNS-запись`. Root направляет к TLD, TLD — к авторитетному серверу конкретного домена.
+Упрощённая цепочка поиска: `root → TLD (.com, .ru) → авторитетный сервер → запись`. A/AAAA содержат IP-адреса, MX указывает почтовые серверы, TXT хранит текст. DNS не ограничивается адресами сайтов.
 
 ---
 
@@ -141,31 +113,23 @@ A simplified lookup path is: `Root → TLD → authoritative DNS → DNS record`
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**A DNS resolver is a service that performs DNS lookups on behalf of a client.**
-
 #### Interview answer
 
-> A DNS resolver receives a DNS query from a client. It first checks its cache and, if necessary, queries the DNS hierarchy until it obtains the required record, then returns the result to the client.
+> A recursive DNS resolver finds DNS records for a client, using its cache or querying other DNS servers.
 
 #### Details
 
-Resolvers cache records, reducing the need to repeat the full lookup chain.
+The local stub resolver typically asks a recursive resolver to do the lookup. A recursive resolver can query the hierarchy or forward the request. Cached answers have a limited lifetime, so the full chain is not repeated for every lookup.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**DNS-резолвер — это посредник, который выполняет DNS-поиск за клиент.**
-
 #### Ответ на собеседовании
 
-> DNS-резолвер получает DNS-запрос от клиента. Сначала он проверяет кеш, а если нужной записи нет, обращается к DNS-инфраструктуре, получает результат и возвращает его клиенту.
+> Рекурсивный DNS-резолвер находит записи для клиента: берёт ответ из кеша или обращается к другим DNS-серверам.
 
 #### Подробнее
 
-Резолвер может обращаться к root-, TLD- и авторитетным DNS-серверам. Полученные ответы он кеширует, поэтому полная цепочка не выполняется при каждом запросе.
+Локальный stub resolver обычно передаёт запрос рекурсивному резолверу. Тот обходит DNS-иерархию или пересылает запрос другому серверу. Ответы кешируются на ограниченное время, поэтому полная цепочка нужна не при каждом обращении.
 
 ---
 
@@ -173,13 +137,9 @@ Resolvers cache records, reducing the need to repeat the full lookup chain.
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**An IP address identifies a host or network interface in an IP network and is used to route packets to their destination.**
-
 #### Interview answer
 
-> An IP address is used to identify a host or network interface and route network traffic. IPv4 uses 32-bit addresses, usually represented as four numbers from 0 to 255, while IPv6 uses 128-bit addresses.
+> An IP address identifies a network interface for routing traffic. IPv4 addresses have 32 bits; IPv6 addresses have 128 bits.
 
 #### Details
 
@@ -187,13 +147,9 @@ An IP address is a network-level identifier and is not necessarily a one-to-one 
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**IP-адрес — это сетевой адрес узла или интерфейса, используемый для маршрутизации данных в IP-сети.**
-
 #### Ответ на собеседовании
 
-> IP-адрес используется для идентификации узла или сетевого интерфейса в IP-сети и для маршрутизации данных. IPv4 использует 32-битные адреса, обычно записываемые четырьмя числами от 0 до 255, а IPv6 использует 128-битные адреса.
+> IP-адрес идентифицирует сетевой интерфейс и используется для маршрутизации. Адрес IPv4 содержит 32 бита, IPv6 — 128 бит.
 
 #### Подробнее
 
@@ -205,31 +161,23 @@ IP — не просто «адрес сайта». Один IP может об�
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**TCP is a transport protocol that provides reliable and ordered delivery of data between endpoints.**
-
 #### Interview answer
 
-> TCP is a connection-oriented transport protocol. It provides reliable and ordered delivery and retransmits data when necessary. A TCP connection is established using a three-way handshake.
+> TCP provides a reliable, ordered byte stream between applications. It establishes a connection and retransmits lost data.
 
 #### Details
 
-The classic handshake is `SYN → SYN-ACK → ACK`.
+The classic handshake is `SYN → SYN-ACK → ACK`. TCP handles acknowledgments, retransmission, ordering, and flow control. It does not preserve application-message boundaries, and a broken connection can still cause an operation to fail.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**TCP — транспортный протокол, который обеспечивает надежную и упорядоченную передачу данных между двумя сторонами.**
-
 #### Ответ на собеседовании
 
-> TCP — транспортный протокол с установлением соединения. Он обеспечивает надежную и упорядоченную передачу данных, обнаруживает потери и при необходимости повторно передает данные.
+> TCP передаёт между приложениями надёжный, упорядоченный поток байтов. Он устанавливает соединение и повторно передаёт потерянные данные.
 
 #### Подробнее
 
-Соединение классически устанавливается через three-way handshake: `SYN → SYN-ACK → ACK`. TCP также отвечает за порядок, подтверждения, повторные передачи и управление потоком.
+Соединение обычно устанавливается через `SYN → SYN-ACK → ACK`. TCP управляет подтверждениями, повторной передачей, порядком и потоком данных. Границы сообщений приложения он не сохраняет; при разрыве соединения операция всё равно может завершиться ошибкой.
 
 ---
 
@@ -237,31 +185,23 @@ The classic handshake is `SYN → SYN-ACK → ACK`.
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**TLS is a cryptographic protocol that protects data in transit through encryption, integrity protection, and authentication.**
-
 #### Interview answer
 
-> TLS provides secure communication between a client and a server. During the TLS handshake, the server presents its certificate and the parties establish encryption parameters. HTTP traffic can then be transmitted securely.
+> TLS protects data in transit through encryption and integrity checks. In typical HTTPS connections, it also authenticates the server using a certificate.
 
 #### Details
 
-For interview purposes, remember encryption, integrity, and server authentication.
+In a typical full HTTPS handshake, the client validates the server's certificate and both sides establish keys. TLS also supports resumption and other authentication modes, so a certificate exchange is not mandatory in every handshake. Transport protection does not prove that the website itself is trustworthy.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**TLS защищает данные при передаче: шифрует их, обеспечивает целостность и помогает проверить подлинность сервера.**
-
 #### Ответ на собеседовании
 
-> TLS — криптографический протокол для защищенной передачи данных. При установлении HTTPS-соединения клиент и сервер выполняют TLS handshake, сервер предоставляет сертификат, стороны согласовывают параметры защищенного соединения, после чего HTTP-трафик передается в зашифрованном виде.
+> TLS защищает передаваемые данные шифрованием и проверкой целостности. В типичном HTTPS-соединении он также подтверждает подлинность сервера по сертификату.
 
 #### Подробнее
 
-Для техрайтера достаточно понимать три задачи TLS: шифрование, целостность и аутентификация сервера по сертификату.
+В типичном полном HTTPS-handshake клиент проверяет сертификат сервера, стороны устанавливают ключи. TLS также поддерживает возобновление сессий и другие режимы аутентификации, поэтому сертификат передаётся не в каждом handshake. Защита соединения не доказывает добросовестность самого сайта.
 
 ---
 
@@ -269,13 +209,9 @@ For interview purposes, remember encryption, integrity, and server authenticatio
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**HTTP is an application-layer protocol that defines request-response communication between clients and servers. It can transfer both text and binary data.**
-
 #### Interview answer
 
-> HTTP is an application-layer protocol based on a request-response model. A client sends an HTTP request containing a method, target resource, headers, and optionally a body. The server returns an HTTP response containing a status, headers, and a body.
+> HTTP is an application-layer request-response protocol: a client sends a request and a server returns a response.
 
 #### Details
 
@@ -283,13 +219,9 @@ HTTP can carry many data formats; `Content-Type` tells the recipient how to inte
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**HTTP — протокол прикладного уровня для обмена запросами и ответами между клиентом и сервером. Через HTTP можно передавать как текстовые, так и бинарные данные.**
-
 #### Ответ на собеседовании
 
-> HTTP — это протокол прикладного уровня, основанный на модели request-response. Клиент отправляет HTTP-запрос, содержащий метод, целевой ресурс, заголовки и при необходимости тело. Сервер возвращает HTTP-ответ со статусом, заголовками и телом.
+> HTTP — протокол прикладного уровня: клиент отправляет запрос, сервер возвращает ответ.
 
 #### Подробнее
 
@@ -301,13 +233,9 @@ HTTP может передавать HTML, JSON, XML, изображения, PD
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**HTTPS is HTTP transported over a secure TLS connection.**
-
 #### Interview answer
 
-> HTTPS uses HTTP for application-level communication and TLS to provide encryption, integrity, and server authentication.
+> HTTPS is HTTP protected by TLS. It adds encryption, integrity, and authentication without changing HTTP method semantics.
 
 #### Details
 
@@ -315,17 +243,13 @@ The HTTP request-response model remains the same; TLS adds transport security.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**HTTPS — это HTTP, передаваемый через защищенное TLS-соединение.**
-
 #### Ответ на собеседовании
 
-> HTTPS использует HTTP на прикладном уровне и TLS для шифрования, контроля целостности и проверки подлинности сервера. Методы HTTP, структура запросов и ответов при этом сохраняются.
+> HTTPS — это HTTP с защитой TLS: шифрованием, контролем целостности и аутентификацией. Смысл HTTP-методов при этом не меняется.
 
 #### Подробнее
 
-Упрощенно: `HTTP → TLS → transport/network layers`. В обычной речи нормально говорить «HTTPS-запрос».
+Для HTTPS через HTTP/1.1 или HTTP/2 модель выглядит как `HTTP → TLS → TCP`. В HTTP/3 используется QUIC со встроенным TLS 1.3. В обычной речи корректно говорить «HTTPS-запрос».
 
 ---
 
@@ -333,13 +257,9 @@ The HTTP request-response model remains the same; TLS adds transport security.
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**An HTTP request contains a method and target, headers, and optionally a body. GET, POST, PUT, PATCH, and DELETE are HTTP methods, not headers.**
-
 #### Interview answer
 
-> An HTTP request contains a method, request target, headers, and optionally a body. The method describes the intended operation, while headers provide metadata such as content type or authentication information.
+> An HTTP request has a method, a target, headers, and optionally a body. Together they specify what the client asks the server to do.
 
 #### Details
 
@@ -347,13 +267,9 @@ In HTTP/1.1, the request line contains the method, target, and protocol version.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**HTTP-запрос содержит метод и целевой ресурс, заголовки и при необходимости тело. GET, POST, PUT, PATCH и DELETE — это методы HTTP, а не заголовки.**
-
 #### Ответ на собеседовании
 
-> HTTP-запрос содержит метод, целевой путь или ресурс, заголовки и при необходимости тело. Метод описывает предполагаемую операцию, а заголовки передают метаданные, например тип содержимого или данные для аутентификации.
+> HTTP-запрос содержит метод, адресуемый ресурс, заголовки и необязательное тело. Они определяют, что клиент просит выполнить.
 
 #### Подробнее
 
@@ -365,31 +281,23 @@ In HTTP/1.1, the request line contains the method, target, and protocol version.
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**GET retrieves, POST creates or submits, PUT replaces, PATCH partially updates, and DELETE removes a resource.**
-
 #### Interview answer
 
-> GET is commonly used to retrieve data, POST to submit data or create a resource, PUT to replace a resource, PATCH to partially update it, and DELETE to remove it.
+> GET reads; POST submits data for processing; PUT creates or replaces at the target URI; PATCH applies partial changes; DELETE requests removal.
 
 #### Details
 
-These are common semantics, especially in REST-style APIs.
+PUT targets a specific URI and can create a missing resource or replace its representation. POST can create a resource, but also performs other processing. GET, PUT, and DELETE are idempotent by defined semantics; POST and PATCH are not necessarily so. Idempotent means repeating the request has the same intended effect, not necessarily the same response.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**GET — получить, POST — создать или отправить данные на обработку, PUT — заменить, PATCH — частично изменить, DELETE — удалить.**
-
 #### Ответ на собеседовании
 
-> Основные HTTP-методы описывают предполагаемое действие над ресурсом. GET обычно используют для получения данных, POST — для отправки данных или создания ресурса, PUT — для полной замены, PATCH — для частичного изменения, DELETE — для удаления.
+> GET читает; POST отправляет данные на обработку; PUT создаёт или заменяет по заданному URI; PATCH вносит частичные изменения; DELETE запрашивает удаление.
 
 #### Подробнее
 
-Это общая семантика HTTP и распространенная практика REST API. Конкретный API может использовать методы неидеально или по своим соглашениям.
+PUT обращается к конкретному URI и может создать отсутствующий ресурс или заменить его представление. POST не ограничивается созданием: это также другие виды обработки. GET, PUT и DELETE идемпотентны по определению; POST и PATCH — не обязательно. Идемпотентность означает одинаковый предполагаемый эффект повтора, а не одинаковые ответы.
 
 ---
 
@@ -397,31 +305,23 @@ These are common semantics, especially in REST-style APIs.
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**An HTTP response contains a status, headers, and optionally a body with returned data.**
-
 #### Interview answer
 
-> An HTTP response contains a status code, response headers, and usually a body. The status code indicates the result of processing the request, while the body contains the returned data.
+> An HTTP response contains a status code, headers, and optionally a body with returned data.
 
 #### Details
 
-The status describes the result, headers carry metadata, and the body carries the payload.
+For example, an HTTP/1.1 response can begin with `HTTP/1.1 200 OK`, followed by headers, a blank line, and a body. Responses to HEAD, and responses with status 204 or 304, have no body.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**HTTP-ответ содержит статус, заголовки и при необходимости тело с возвращаемыми данными.**
-
 #### Ответ на собеседовании
 
-> HTTP-ответ содержит статус запроса, заголовки и обычно тело ответа. Статус-код показывает результат обработки, заголовки содержат метаданные, а тело может содержать HTML, JSON, изображение, файл или другие данные.
+> HTTP-ответ содержит статус-код, заголовки и необязательное тело с возвращаемыми данными.
 
 #### Подробнее
 
-Например: `HTTP/1.1 200 OK`, затем заголовки вроде `Content-Type`, затем body с данными.
+Например, HTTP/1.1-ответ начинается с `HTTP/1.1 200 OK`, затем идут заголовки, пустая строка и тело. Ответы на HEAD, а также ответы 204 и 304 тела не содержат.
 
 ---
 
@@ -429,31 +329,23 @@ The status describes the result, headers carry metadata, and the body carries th
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**HTTP status codes indicate the result of processing a request: 2xx success, 3xx redirection, 4xx client/request/access problems, and 5xx server errors.**
-
 #### Interview answer
 
-> HTTP status codes describe the result of a request: 2xx means success, 3xx redirection, 4xx client-side problems, and 5xx server-side errors.
+> Status codes describe the result: 1xx informational, 2xx success, 3xx redirection, 4xx client error, and 5xx server error.
 
 #### Details
 
-Common examples include 200, 201, 400, 401, 403, 404, 500, 502, and 503.
+Remember `200 OK`, `201 Created`, `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, `404 Not Found`, `500 Internal Server Error`, `502 Bad Gateway`, and `503 Service Unavailable`. The 3xx class includes `304 Not Modified`: use the cached representation, rather than necessarily redirecting to a new URL.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Статус-коды HTTP показывают результат обработки запроса: 2xx — успех, 3xx — перенаправление, 4xx — проблема с запросом или доступом, 5xx — ошибка сервера.**
-
 #### Ответ на собеседовании
 
-> HTTP status code показывает результат обработки запроса. Например, 2xx означает успешную обработку, 4xx — что запрос не может быть выполнен из-за проблемы с запросом или доступом клиента, а 5xx — проблему на стороне сервера.
+> Статус-коды описывают результат: 1xx — информация, 2xx — успех, 3xx — перенаправление, 4xx — ошибка клиента, 5xx — ошибка сервера.
 
 #### Подробнее
 
-Важно знать: `200 OK`, `201 Created`, `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, `404 Not Found`, `500 Internal Server Error`, `502 Bad Gateway`, `503 Service Unavailable`.
+Важно знать: `200 OK`, `201 Created`, `400 Bad Request`, `401 Unauthorized`, `403 Forbidden`, `404 Not Found`, `500 Internal Server Error`, `502 Bad Gateway`, `503 Service Unavailable`. В класс 3xx входит `304 Not Modified`: используется кешированное представление, а не обязательно переход на новый URL.
 
 ---
 
@@ -461,31 +353,23 @@ Common examples include 200, 201, 400, 401, 403, 404, 500, 502, and 503.
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**401 means valid authentication credentials are required. 403 means the server understands the request but refuses access.**
-
 #### Interview answer
 
-> 401 means valid authentication credentials are required. 403 means the server understands the request but refuses access.
+> 401 means valid authentication credentials are missing. 403 means the server understood the request but refuses to fulfill it.
 
 #### Details
 
-A useful memory aid is: `401 → Who are you?`, `403 → I know who you are, but you cannot access this.`
+A 401 response must include a `WWW-Authenticate` challenge. A 403 can mean insufficient permissions, but can also have reasons unrelated to credentials; it does not prove that the caller is authenticated. Remember: `401 → valid credentials needed`; `403 → request refused`.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**401 — нужна корректная аутентификация. 403 — сервер понял запрос, но доступ запрещен.**
-
 #### Ответ на собеседовании
 
-> 401 обычно означает, что для выполнения запроса требуется корректная аутентификация. 403 означает, что сервер понял запрос, но отказывается предоставлять доступ.
+> 401 означает отсутствие подходящих учётных данных для аутентификации. 403 означает, что сервер понял запрос, но отказывается его выполнять.
 
 #### Подробнее
 
-Запоминалка: `401 → Кто ты?` и `403 → Я знаю, кто ты, но тебе нельзя.`
+Ответ 401 должен содержать `WWW-Authenticate`. Причиной 403 могут быть недостаточные права или ограничения, не связанные с учётными данными: этот код не доказывает, что клиент аутентифицирован. Запоминалка: `401 → нужны подходящие учётные данные`; `403 → запрос отклонён`.
 
 ---
 
@@ -493,13 +377,9 @@ A useful memory aid is: `401 → Who are you?`, `403 → I know who you are, but
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**HTTP headers contain metadata about a request or response.**
-
 #### Interview answer
 
-> HTTP headers contain metadata about a request or response, such as content type, authentication information, caching rules, and cookies.
+> HTTP headers carry metadata, such as content type, authentication information, and caching rules.
 
 #### Details
 
@@ -507,13 +387,9 @@ Common examples include `Content-Type`, `Accept`, `Authorization`, `Cookie`, and
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**HTTP headers — это метаданные запроса или ответа: тип данных, авторизация, cookies, кеширование и другие параметры.**
-
 #### Ответ на собеседовании
 
-> HTTP headers передают дополнительную информацию о запросе или ответе. Например, Content-Type описывает формат тела сообщения, Authorization может содержать данные для аутентификации, а Cookie передает cookies клиента.
+> HTTP-заголовки передают метаданные: например, тип содержимого, данные аутентификации и правила кеширования.
 
 #### Подробнее
 
@@ -525,31 +401,23 @@ Common examples include `Content-Type`, `Accept`, `Authorization`, `Cookie`, and
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**The HTTP body is the message payload — the actual data being transferred. It can contain text or binary data.**
-
 #### Interview answer
 
-> The HTTP body contains the actual payload being transferred, such as JSON, HTML, an image, a file, or another data format.
+> The body carries the message's data, such as JSON, HTML, or a file. Not every HTTP message has a body.
 
 #### Details
 
-Not every HTTP request or response has a body.
+GET request content has no generally defined semantics: do not add a GET body unless the API explicitly supports it. For example, a POST request can carry JSON describing a new user. Response bodies can contain data or error information, subject to method and status rules.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**HTTP body — это полезная нагрузка сообщения, то есть сами передаваемые данные. Тело может быть текстовым или бинарным и присутствует не всегда.**
-
 #### Ответ на собеседовании
 
-> Body — это часть HTTP-сообщения, в которой передаются сами данные. Это может быть JSON, HTML, XML, изображение, PDF, видео или другой контент.
+> Тело содержит передаваемые данные: например, JSON, HTML или файл. Оно есть не у каждого HTTP-сообщения.
 
 #### Подробнее
 
-Не каждый запрос или ответ имеет body. Например, GET-запрос часто идет без тела, а POST обычно может содержать данные.
+У тела GET-запроса нет общепринятой семантики: не добавляй его без явной поддержки со стороны API. POST, например, может передать JSON с данными нового пользователя. Тело ответа может содержать данные или описание ошибки с учётом правил метода и статус-кода.
 
 ---
 
@@ -557,13 +425,9 @@ Not every HTTP request or response has a body.
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**HTTP can carry binary data in the message body. `Content-Type` tells the client how to interpret those bytes.**
-
 #### Interview answer
 
-> HTTP is not limited to text. The response body can contain binary data such as images, audio, or video, while the Content-Type header tells the client how to interpret that data.
+> HTTP can carry binary media in the response body. Content-Type identifies the media format, such as image/jpeg or video/mp4.
 
 #### Details
 
@@ -571,13 +435,9 @@ Large media resources may also be requested in byte ranges.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**HTTP может передавать бинарные данные в body, а `Content-Type` сообщает клиенту, как интерпретировать эти байты.**
-
 #### Ответ на собеседовании
 
-> HTTP не ограничен текстом. Тело ответа может содержать бинарные данные, например изображение, аудио или видео. Заголовок Content-Type сообщает клиенту, какой это тип данных.
+> HTTP может передавать бинарные медиафайлы в теле ответа. Content-Type указывает формат: например, image/jpeg или video/mp4.
 
 #### Подробнее
 
@@ -589,31 +449,23 @@ Large media resources may also be requested in byte ranges.
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**A cookie is a small piece of data stored by the browser and sent with matching future requests according to cookie rules.**
-
 #### Interview answer
 
-> Cookies allow a website to store small pieces of data in the browser. They can be used for session management, preferences, personalization, analytics, and other purposes.
+> Cookies are small pieces of data stored by the browser and sent with matching requests. They are often used for sessions and preferences.
 
 #### Details
 
-Important cookie attributes include `HttpOnly`, `Secure`, `SameSite`, and expiration settings.
+The server sends `Set-Cookie`, and the browser can later send `Cookie` according to scope and browser policy. `HttpOnly` blocks access through JavaScript cookie APIs; `Secure` restricts transmission to secure connections; `SameSite` limits cross-site sending. These controls complement, not replace, application security.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Cookie — небольшой фрагмент данных, который браузер хранит и может автоматически отправлять серверу с последующими подходящими запросами.**
-
 #### Ответ на собеседовании
 
-> Cookie — это небольшой фрагмент данных, который сайт сохраняет в браузере. Браузер может автоматически отправлять cookie обратно серверу с последующими подходящими запросами. Cookies используются, например, для управления сессиями, настроек и персонализации.
+> Cookies — небольшие данные, которые браузер хранит и отправляет с подходящими запросами. Их часто используют для сессий и настроек.
 
 #### Подробнее
 
-Сервер может отправить `Set-Cookie: session_id=abc123`, а браузер затем вернуть `Cookie: session_id=abc123`. Важные атрибуты: `HttpOnly`, `Secure`, `SameSite`, `Expires/Max-Age`.
+Сервер отправляет `Set-Cookie`, браузер затем может отправить `Cookie` с учётом области действия и своей политики. `HttpOnly` закрывает доступ через JavaScript API cookies, `Secure` ограничивает передачу защищёнными соединениями, `SameSite` ограничивает межсайтовую отправку. Это дополнительные меры, а не замена защите приложения.
 
 ---
 
@@ -621,31 +473,23 @@ Important cookie attributes include `HttpOnly`, `Secure`, `SameSite`, and expira
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**A session is a mechanism for maintaining state across multiple requests. With traditional server-side sessions, the server stores session data and the browser usually stores a session identifier in a cookie.**
-
 #### Interview answer
 
-> HTTP is stateless, so applications need an additional mechanism to maintain user state between requests. With server-side sessions, the server stores the session data and the browser typically sends a session ID in a cookie.
+> A session connects multiple requests to the same application state. With server-side sessions, the client usually sends a cookie containing a session ID.
 
 #### Details
 
-The session ID links a browser request to server-side session data.
+The session ID links a request to server-side data, often stored in a database or cache. It should be unpredictable, expire appropriately, and be invalidated when needed. A session is not a TCP connection; signed client-side state is a different implementation option.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Сессия — механизм сохранения состояния между запросами. При классической server-side session данные хранятся на сервере, а браузер обычно хранит cookie с идентификатором сессии.**
-
 #### Ответ на собеседовании
 
-> HTTP является stateless-протоколом, поэтому приложениям нужен дополнительный механизм для сохранения состояния пользователя между запросами. Один из классических вариантов — server-side sessions: сервер хранит данные сессии, а браузер получает cookie с идентификатором сессии и отправляет его с последующими запросами.
+> Сессия связывает несколько запросов с одним состоянием приложения. При серверной сессии клиент обычно передаёт её идентификатор в cookie.
 
 #### Подробнее
 
-Типичный поток после логина: сервер создает `session_id`, отправляет его в cookie, браузер сохраняет cookie и отправляет его дальше, а сервер по ID находит сессию и узнает пользователя.
+По идентификатору сервер находит данные сессии, часто в БД или кеше. Идентификатор должен быть непредсказуемым, иметь срок действия и при необходимости отзываться. Сессия не равна TCP-соединению; хранение подписанного состояния на клиенте — другой вариант реализации.
 
 ---
 
@@ -653,13 +497,9 @@ The session ID links a browser request to server-side session data.
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**Docs as Code is an approach where documentation is managed using tools and workflows similar to software development: text-based source files, Git, branches, reviews, CI checks, builds, and automated publishing.**
-
 #### Interview answer
 
-> Docs as Code is an approach where documentation follows a development-like workflow. Documentation source files are stored in version control, typically Git, and changes are made through branches, commits, and pull requests. They can be reviewed, automatically checked in CI, and then built and published after merging.
+> Docs as Code applies development practices to documentation: version control, review, automated checks, and publishing.
 
 #### Details
 
@@ -667,13 +507,9 @@ Docs as Code is a workflow concept, not a specific tool or file format.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Docs as Code — это подход, при котором документацию ведут примерно теми же инструментами и процессами, что и программный код: текстовые файлы, Git, ветки, review, CI, сборка и публикация.**
-
 #### Ответ на собеседовании
 
-> Docs as Code — это подход к работе с документацией, при котором она хранится в системе контроля версий и проходит похожий на разработку workflow. Например, технический писатель пишет документацию в Markdown, создает Git-ветку, делает commit и pull request, после чего изменения проходят review. Автоматические проверки могут проверять стиль, ссылки и сборку, а после merge документация может автоматически публиковаться.
+> Docs as Code применяет к документации практики разработки: контроль версий, ревью, автоматические проверки и публикацию.
 
 #### Подробнее
 
@@ -686,15 +522,23 @@ Docs as Code is a workflow concept, not a specific tool or file format.
 ### 🇬🇧 English
 
 ```text
-URL → DNS → IP → TCP → TLS → HTTP Request → Server → HTTP Response → Browser
+URL → resolve host → secure connection → HTTP request → response → rendering
 ```
 
-HTTP itself is stateless; cookies and sessions can help an application maintain user state across requests.
+For HTTPS, HTTP/1.1 and HTTP/2 use TLS over TCP; HTTP/3 uses QUIC with TLS. Caching and connection reuse can skip steps. HTTP itself is stateless; cookies and sessions can maintain application state across requests.
 
 ### 🇷🇺 Русский
 
 ```text
-URL → DNS → IP → TCP → TLS → HTTP Request → Server → HTTP Response → Browser
+URL → адрес сервера → защищённое соединение → HTTP-запрос → ответ → отображение
 ```
 
-HTTP сам по себе stateless; cookies и sessions помогают приложению сохранять состояние пользователя между запросами.
+Для HTTPS HTTP/1.1 и HTTP/2 используют TLS поверх TCP; HTTP/3 — QUIC с TLS. Кеш и повторное использование соединения позволяют пропустить часть шагов. HTTP не хранит состояние между запросами; cookies и sessions помогают хранить его на уровне приложения.
+
+## References / Источники
+
+Technical review: 2026-11-03. / Техническая проверка: 2026-11-03.
+
+- [DNS: RFC 1034](https://www.rfc-editor.org/rfc/rfc1034.html), [TCP: RFC 9293](https://www.rfc-editor.org/rfc/rfc9293.html), [TLS 1.3: RFC 8446](https://www.rfc-editor.org/rfc/rfc8446.html).
+- [HTTP semantics: RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html), [HTTP/3: RFC 9114](https://www.rfc-editor.org/rfc/rfc9114.html), [MDN: cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies).
+- [Write the Docs: Docs as Code](https://www.writethedocs.org/guide/docs-as-code/).

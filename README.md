@@ -20,13 +20,32 @@ A structured knowledge base for preparing for technical writer interviews.
 
 Most topics are written with English as the primary version. When a topic is bilingual, the English block comes first, followed by the Russian support block.
 
-Each language block uses the same learning structure:
+All 135 questions in sections 01–10 use two blocks in each language:
 
-1. **Quick recall** — one or two sentences to refresh the concept.
-2. **Interview answer** — a concise answer suitable for an interview.
-3. **Details** — enough depth to rebuild understanding.
+1. **Interview answer / Ответ на собеседовании** — one or two short sentences with the essential point.
+2. **Details / Подробнее** — examples, explanations, limitations, and useful follow-ups.
+
+Start with the short answer; expand from Details when asked. Behavioral
+answers are frameworks: use genuine experience, not invented achievements.
+
+Во всех 135 вопросах разделов 01–10 сначала идёт английский, затем русский.
+Для повторения достаточно короткого ответа; пояснения и оговорки остаются
+в «Подробнее». В ответах об опыте подставляй только реальные случаи.
 
 The Documentation English section contains phrase tables, sentence patterns, and review exercises based on translation practice. Its README links to each guide.
+
+## Review Notes
+
+Reviewed on 2026-11-03. Technical corrections were checked against primary
+documentation linked in the sections. Interview reports are anecdotal,
+not guarantees about future interviews; adapted questions and sources
+unavailable for rechecking are labeled. Code excerpts are illustrative
+unless an entry explicitly states how they were tested.
+
+Проверка: 2026-11-03. Технические исправления сверены с первоисточниками,
+указанными в разделах. Адаптации вопросов и недоступные для повторной
+проверки источники отмечены отдельно. Примеры кода учебные, если для них
+явно не указана выполненная проверка.
 
 ## Goal
 

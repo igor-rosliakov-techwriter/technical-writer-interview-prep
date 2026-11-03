@@ -6,8 +6,8 @@ It covers the practical basics: Docker, containerization, Dockerfile, images, co
 
 Each question contains two separate language blocks. English is the primary version and comes first:
 
-- 🇬🇧 **English** — quick recall, interview answer, details.
-- 🇷🇺 **Русский** — быстро вспомнить, ответ на собеседовании, подробнее.
+- 🇬🇧 **English** — short interview answer, details.
+- 🇷🇺 **Русский** — короткий ответ на собеседовании, подробнее.
 
 ---
 
@@ -15,18 +15,9 @@ Each question contains two separate language blocks. English is the primary vers
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**Docker is a platform for containerizing and running applications in
-isolated containers. It packages an application with the environment and
-dependencies it needs so it can run consistently on different
-machines.**
-
 #### Interview answer
 
-> Docker is a containerization platform. It lets us package an
-> application and its required dependencies into a Docker image and then
-> run isolated containers from that image in a predictable environment.
+> Docker builds and runs containerized applications. An image packages application files and dependencies; containers run instances of that image.
 
 #### Details
 
@@ -34,8 +25,9 @@ One of the main problems Docker solves is the classic "it works on my
 machine" issue. Different computers may have different versions of
 Python, Node.js, system libraries, or other components.
 
-Docker lets us define the required environment and reproduce it on
-another machine where Docker is available.
+Docker helps reproduce the environment on compatible hosts. CPU
+architecture, kernel features, configuration, and external services still
+matter; an image is not a guarantee of identical behavior everywhere.
 
 ```text
 Dockerfile → docker build → Image → docker run → Container
@@ -43,19 +35,9 @@ Dockerfile → docker build → Image → docker run → Container
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Docker — это платформа для контейнеризации и запуска приложений в
-изолированных контейнерах. Она позволяет упаковать приложение вместе с
-необходимым окружением и зависимостями, чтобы оно одинаково запускалось
-на разных машинах.**
-
 #### Ответ на собеседовании
 
-> Docker — это платформа для контейнеризации приложений. С ее помощью
-> приложение и необходимые ему зависимости можно упаковать в Docker
-> image, а затем запускать из этого образа изолированные контейнеры с
-> предсказуемым окружением.
+> Docker собирает и запускает контейнеризированные приложения. Образ содержит файлы и зависимости; контейнеры запускают экземпляры этого образа.
 
 #### Подробнее
 
@@ -64,8 +46,9 @@ Dockerfile → docker build → Image → docker run → Container
 разные версии Python, Node.js, системных библиотек или других
 компонентов.
 
-Docker позволяет заранее определить окружение приложения и
-воспроизводить его на другой машине, где установлен Docker.
+Docker помогает воспроизводить окружение на совместимых хостах.
+Архитектура CPU, возможности ядра, настройки и внешние сервисы всё равно
+важны: образ не гарантирует одинакового поведения на любой машине.
 
 Упрощенная схема:
 
@@ -79,17 +62,9 @@ Dockerfile → docker build → Image → docker run → Container
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**Docker provides reproducible environments: an application runs with
-the runtime, libraries, and other dependencies it was prepared for.**
-
 #### Interview answer
 
-> Docker helps reduce differences between developer machines, test
-> environments, and servers. We define the application environment,
-> build an image, and can run containers from the same image in
-> different environments.
+> Docker makes application environments more reproducible across development, testing, and deployment. Host compatibility and external configuration still matter.
 
 #### Details
 
@@ -102,18 +77,9 @@ deployment, and running multiple isolated services.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Docker нужен для воспроизводимого окружения: приложение запускается с
-теми версиями runtime, библиотек и других зависимостей, для которых оно
-было подготовлено.**
-
 #### Ответ на собеседовании
 
-> Docker помогает избежать различий между окружениями разработчиков,
-> тестовыми стендами и серверами. Мы описываем окружение приложения,
-> собираем image и можем запускать контейнеры из одного и того же образа
-> в разных местах.
+> Docker делает окружение приложения воспроизводимее при разработке, тестировании и развёртывании. Совместимость хоста и внешние настройки всё равно важны.
 
 #### Подробнее
 
@@ -134,45 +100,32 @@ Docker также удобен для:
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**Containerization is a way to package and run an application with its
-dependencies in an isolated environment called a container.**
-
 #### Interview answer
 
-> Containerization is an approach where an application and its required
-> environment are prepared so the application can run consistently in
-> isolated containers across different machines.
+> Containerization packages applications for execution in isolated environments. Typical Linux containers share a kernel instead of booting a separate guest OS.
 
 #### Details
 
-A container isolates an application from other processes and
-applications on the host, but it does not require a separate full guest
-operating system like a virtual machine does.
+A typical Linux container uses namespaces and resource controls to
+isolate processes. It shares the kernel with other containers on that
+Linux host; this is not an absolute security boundary. Privileged mode
+and broad mounts can expose the host.
 
 Image layers are an implementation detail of Docker images, not the
 definition of containerization itself.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Контейнеризация — это способ упаковать и запускать приложение с его
-зависимостями в изолированной среде — контейнере.**
-
 #### Ответ на собеседовании
 
-> Контейнеризация — это подход, при котором приложение и необходимое
-> ему окружение подготавливаются так, чтобы приложение можно было
-> запускать в изолированных контейнерах одинаковым образом на разных
-> машинах.
+> Контейнеризация подготавливает приложения к запуску в изолированном окружении. Обычные Linux-контейнеры используют общее ядро вместо загрузки отдельной гостевой ОС.
 
 #### Подробнее
 
-Контейнер изолирует приложение от других процессов и приложений на
-хосте, но при этом не требует отдельной полноценной гостевой ОС, как
-виртуальная машина.
+Обычный Linux-контейнер использует namespaces и ограничения ресурсов для
+изоляции процессов. Он разделяет ядро с другими контейнерами этого
+Linux-хоста, но не даёт абсолютной защиты. Привилегированный режим и
+широкие монтирования могут открыть доступ к хосту.
 
 Важно не смешивать контейнеризацию со слоями Docker image. Слои — это
 механизм хранения и сборки образа, а контейнеризация — более общий
@@ -184,18 +137,9 @@ definition of containerization itself.
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**A virtual machine runs a full guest OS with its own kernel, while
-containers share the host OS kernel. This usually makes containers
-lighter and faster to start.**
-
 #### Interview answer
 
-> A virtual machine virtualizes a complete machine and normally includes
-> a separate guest operating system. A container isolates application
-> processes while sharing the host OS kernel, so it usually requires
-> fewer resources and starts faster.
+> A VM normally has its own guest kernel. Linux containers share a kernel and isolate processes, so their overhead is usually lower.
 
 #### Details
 
@@ -203,30 +147,24 @@ Saying that a container "has no OS at all" is too simplistic. An image
 may contain a Linux user-space filesystem and tools, but the container
 does not boot its own separate kernel like a virtual machine.
 
+Docker Desktop runs Linux containers in a Linux VM on macOS and on Windows
+with a Linux backend. They share that VM's Linux kernel, not the macOS or
+Windows kernel. Windows containers also have distinct isolation modes.
+
 ### 🇷🇺 Русский
-
-#### Быстро вспомнить
-
-**Виртуальная машина запускает полноценную гостевую ОС со своим ядром, а
-контейнеры используют ядро хостовой ОС. Поэтому контейнеры обычно легче
-и быстрее запускаются.**
 
 #### Ответ на собеседовании
 
-> Виртуальная машина виртуализирует целую машину и обычно содержит
-> отдельную гостевую операционную систему. Контейнер изолирует процессы
-> приложения, но использует ядро хостовой ОС, поэтому требует меньше
-> ресурсов и быстрее запускается.
+> У VM обычно своё гостевое ядро. Linux-контейнеры используют общее ядро и изолируют процессы, поэтому накладные расходы обычно ниже.
 
 #### Подробнее
 
-Упрощенно:
+Упрощённая схема для обычных Linux-контейнеров и VM:
 
 ```text
 Virtual Machine:
 Hardware
-→ Host OS
-→ Hypervisor
+→ Hypervisor (directly or through a host OS)
 → Guest OS
 → Application
 
@@ -242,42 +180,44 @@ Hardware
 файловая система и пользовательские компоненты Linux-дистрибутива, но
 контейнер не загружает собственное отдельное ядро ОС как VM.
 
+В Docker Desktop на macOS и Windows с Linux-бэкендом Linux-контейнеры
+работают в Linux-VM и разделяют её ядро, а не ядро macOS или Windows.
+У Windows-контейнеров есть отдельные режимы изоляции.
+
 ---
 
 ## 5. What is a Dockerfile? / Что такое Dockerfile?
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**A Dockerfile is a text file containing instructions Docker uses to
-build an image. It is the build recipe, not the image itself and not a
-container.**
-
 #### Interview answer
 
-> A Dockerfile is a file containing a sequence of instructions for
-> building a Docker image. It can define a base image, copy application
-> files, install dependencies, and specify the command used to start the
-> application.
+> A Dockerfile is a text recipe for building an image: base image, files, dependencies, and startup defaults.
 
 #### Details
 
 A Dockerfile itself is not a running environment. Docker first reads it
 during the image build process.
 
+```dockerfile
+FROM python:3.12
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+CMD ["python", "app.py"]
+```
+
+This assumes `requirements.txt` and `app.py` exist. `RUN` executes during
+build; `CMD` supplies a default startup command or arguments and can be
+overridden. Use `.dockerignore` to exclude local files and secrets from
+the build context. Pinning a tag alone does not make builds immutable.
+
 ### 🇷🇺 Русский
-
-#### Быстро вспомнить
-
-**Dockerfile — это текстовый файл с инструкциями, по которым Docker
-собирает image. Это рецепт сборки, а не сам образ и не контейнер.**
 
 #### Ответ на собеседовании
 
-> Dockerfile — это файл с последовательностью инструкций для сборки
-> Docker image. В нем можно указать базовый image, скопировать файлы
-> приложения, установить зависимости и определить команду запуска.
+> Dockerfile — текстовая инструкция сборки образа: базовый образ, файлы, зависимости и настройки запуска по умолчанию.
 
 #### Подробнее
 
@@ -299,10 +239,15 @@ CMD ["python", "app.py"]
 -   `COPY` — копирует файлы;
 -   `RUN` — выполняет команду во время сборки;
 -   `CMD` — задает команду, которая будет выполняться при запуске
-    контейнера.
+    контейнера, если её не переопределили.
 
 Dockerfile сам по себе не является работающим окружением. Сначала его
 нужно использовать для сборки image.
+
+Пример предполагает наличие `requirements.txt` и `app.py`. `RUN`
+выполняется при сборке, а `CMD` задаёт команду или аргументы запуска по
+умолчанию. Через `.dockerignore` исключают локальные файлы и секреты из
+контекста сборки. Один лишь тег образа не гарантирует неизменность сборок.
 
 ---
 
@@ -310,18 +255,9 @@ Dockerfile сам по себе не является работающим ок�
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**A Docker image is a ready-made immutable template used to create
-containers. It is a build artifact containing the application's
-filesystem, dependencies, and metadata required to run it.**
-
 #### Interview answer
 
-> A Docker image is an immutable template for creating containers. It is
-> commonly built from a Dockerfile using `docker build` and contains the
-> application, required files and dependencies, and information about
-> how it should run.
+> An image is a read-only template containing filesystem layers and configuration. Docker uses it to create containers.
 
 #### Details
 
@@ -339,20 +275,15 @@ The image is a reusable artifact between the build instructions and the
 running container. It can be built once, stored, distributed, and used
 to create multiple containers.
 
+An image digest identifies fixed content, while a tag such as `latest`
+or `3.12` can later point to different content. Images can be stored in a
+registry. `docker images` lists local images.
+
 ### 🇷🇺 Русский
-
-#### Быстро вспомнить
-
-**Docker image — это готовый неизменяемый шаблон, из которого Docker
-создает контейнеры. Он является результатом сборки и содержит файловую
-систему приложения, зависимости и метаданные, необходимые для запуска.**
 
 #### Ответ на собеседовании
 
-> Docker image — это неизменяемый шаблон для создания контейнеров.
-> Обычно он собирается по Dockerfile командой `docker build` и содержит
-> приложение, необходимые файлы и зависимости, а также информацию о том,
-> как его запускать.
+> Образ — шаблон только для чтения, содержащий слои файловой системы и настройки. Docker создаёт из него контейнеры.
 
 #### Подробнее
 
@@ -384,23 +315,18 @@ Image обычно состоит из нескольких слоев и хра
 docker images
 ```
 
+Digest идентифицирует конкретное содержимое, а тег вроде `latest` или
+`3.12` может позднее указывать на другой образ.
+
 ---
 
 ## 7. Dockerfile vs image / В чем разница между Dockerfile и Image?
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**A Dockerfile describes how to build the environment, while an image is
-the already-built result of those instructions.**
-
 #### Interview answer
 
-> A Dockerfile is source text containing build instructions. A Docker
-> image is the resulting artifact produced by `docker build`. When
-> starting a container, Docker uses the image rather than rebuilding the
-> Dockerfile every time.
+> A Dockerfile describes how to build; an image is the built artifact. Changing the Dockerfile requires a rebuild to affect new containers.
 
 #### Details
 
@@ -409,7 +335,7 @@ A useful model is:
 ```text
 Dockerfile = recipe
 Image      = built template
-Container  = running instance
+Container  = instance (running or stopped)
 ```
 
 Changing the Dockerfile does not automatically modify an existing image.
@@ -417,17 +343,9 @@ The image must be rebuilt.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Dockerfile говорит, как собрать окружение, а image — уже собранный
-результат этих инструкций.**
-
 #### Ответ на собеседовании
 
-> Dockerfile — это исходный текст с инструкциями сборки. Docker image
-> — готовый артефакт, полученный после выполнения этих инструкций
-> командой `docker build`. При запуске Docker использует image, а не
-> заново читает Dockerfile.
+> Dockerfile описывает сборку, image — её готовый результат. Чтобы правка Dockerfile попала в новые контейнеры, образ нужно пересобрать.
 
 #### Подробнее
 
@@ -436,7 +354,7 @@ The image must be rebuilt.
 ```text
 Dockerfile = рецепт
 Image      = приготовленная заготовка
-Container  = запущенный экземпляр этой заготовки
+Container  = экземпляр (запущенный или остановленный)
 ```
 
 Если Dockerfile изменить, уже существующий image сам по себе не
@@ -448,17 +366,9 @@ Container  = запущенный экземпляр этой заготовки
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**A container is an instance of a Docker image created to run an
-application. An image is the template; a container is a specific
-isolated environment created from it.**
-
 #### Interview answer
 
-> A container is an isolated instance of a Docker image in which an
-> application can run. Multiple independent containers can be created
-> from the same image.
+> A container is an instance of an image with its own configuration and runtime state. It can be running or stopped.
 
 #### Details
 
@@ -470,17 +380,9 @@ Docker Compose is not required to create multiple containers.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Контейнер — это экземпляр Docker image, созданный для выполнения
-приложения. Image — шаблон, container — конкретная изолированная
-среда, созданная из него.**
-
 #### Ответ на собеседовании
 
-> Контейнер — это изолированный экземпляр Docker image, в котором
-> выполняется приложение. Из одного image можно создавать и запускать
-> несколько независимых контейнеров.
+> Контейнер — экземпляр образа со своими настройками и состоянием. Он может быть запущен или остановлен.
 
 #### Подробнее
 
@@ -505,35 +407,25 @@ Docker Compose для этого не обязателен. Несколько �
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**An image is an immutable template; a container is an instance created
-from that template. One image can be used to create many containers.**
-
 #### Interview answer
 
-> A Docker image stores the prepared environment and acts as a template.
-> `docker run` creates a specific container from that image and starts
-> the application's process inside it.
+> An image is a reusable template; a container is a particular instance. A container's writable layer does not change the original image.
 
 #### Details
 
 Changes made inside a running container do not automatically modify the
 original image.
 
+The writable layer survives stopping and starting the same container,
+but is removed when that container is removed. Use volumes or bind
+mounts for data that must outlive it; shared mounts can also connect
+otherwise separate containers.
+
 ### 🇷🇺 Русский
-
-#### Быстро вспомнить
-
-**Image — неизменяемый шаблон, container — созданный из него
-экземпляр. Один image можно использовать для создания множества
-контейнеров.**
 
 #### Ответ на собеседовании
 
-> Docker image хранит подготовленное окружение и используется как
-> шаблон. `docker run` создает из него конкретный контейнер и запускает
-> процесс приложения внутри этого контейнера.
+> Образ — повторно используемый шаблон, контейнер — конкретный экземпляр. Записываемый слой контейнера не меняет исходный образ.
 
 #### Подробнее
 
@@ -547,23 +439,20 @@ Container → конкретный экземпляр этого запуска
 Изменения, возникающие во время работы конкретного контейнера, не
 превращают автоматически исходный image в новый образ.
 
+Записываемый слой сохраняется при остановке и запуске того же контейнера,
+но удаляется вместе с контейнером. Для более долгого хранения используют
+volumes или bind mounts. Общие монтирования могут связывать данные разных
+контейнеров, несмотря на отдельное состояние каждого.
+
 ---
 
 ## 10. How is an image created? What does `docker build` do? / Как создается Docker Image? Что делает `docker build`?
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**`docker build` reads a Dockerfile and builds a Docker image from its
-instructions. The resulting image is stored locally and can then be used
-to create containers.**
-
 #### Interview answer
 
-> During `docker build`, Docker reads the Dockerfile and build context,
-> executes the build instructions, and creates an image. Build results
-> can be cached, making subsequent builds faster.
+> docker build processes a Dockerfile and build context to produce an image. Cached build results can avoid repeating unchanged work.
 
 #### Details
 
@@ -579,17 +468,9 @@ docker build -t my-app .
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**`docker build` читает Dockerfile и собирает по его инструкциям Docker
-image. Результат сборки сохраняется локально и затем может
-использоваться для создания контейнеров.**
-
 #### Ответ на собеседовании
 
-> При `docker build` Docker получает Dockerfile и build context,
-> выполняет инструкции сборки и создает image. Результаты шагов могут
-> кэшироваться, поэтому повторная сборка часто выполняется быстрее.
+> docker build обрабатывает Dockerfile и контекст сборки, создавая образ. Кеш помогает не выполнять неизменившиеся шаги заново.
 
 #### Подробнее
 
@@ -620,18 +501,9 @@ image Dockerfile не требуется.
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**`docker run` creates a new container from the specified image and
-starts its configured process. Ports are published only when explicitly
-requested.**
-
 #### Interview answer
 
-> To run a container, we use `docker run <image>`. Docker creates a
-> container from the image, applies the requested configuration, and
-> starts the application command defined in the image or provided by the
-> user.
+> docker run creates and starts a new container from an image. docker start restarts an existing stopped container.
 
 #### Details
 
@@ -641,22 +513,16 @@ For example:
 docker run nginx
 ```
 
-This creates a new container from the `nginx` image. Port publishing is
-a separate option.
+This creates a new container from the `nginx` image, pulling it if needed
+under the default pull policy. It runs in the foreground; `-d` detaches
+the CLI. When the main process exits, the container stops unless a restart
+policy restarts it. Port publishing is a separate option.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**`docker run` создает новый контейнер из указанного image и запускает в
-нем настроенный процесс. Порты публикуются только если это отдельно
-указано параметрами команды.**
-
 #### Ответ на собеседовании
 
-> Для запуска контейнера используется `docker run <image>`. Docker
-> создает контейнер из image, применяет переданные настройки и запускает
-> команду приложения, определенную в image или указанную пользователем.
+> docker run создаёт и запускает новый контейнер из образа. docker start запускает уже существующий остановленный контейнер.
 
 #### Подробнее
 
@@ -668,6 +534,11 @@ docker run nginx
 
 Docker использует image `nginx` и создает из него новый контейнер.
 
+При стандартной pull policy отсутствующий образ скачивается. Команда
+работает на переднем плане; `-d` отсоединяет CLI. После завершения
+основного процесса контейнер останавливается, если его не перезапустит
+настроенная restart policy.
+
 Важно: `docker run` сам по себе не означает автоматический проброс
 портов. Для этого используется, например, `-p`.
 
@@ -677,30 +548,22 @@ Docker использует image `nginx` и создает из него нов
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**Yes. An image is a template, so multiple independent containers can be
-created from the same image. Docker Compose is not required for this.**
-
 #### Interview answer
 
-> Yes, multiple containers can be created from the same Docker image.
-> Each container is a separate instance with its own runtime state while
-> sharing the same image as its base.
+> Yes. One image can create many containers, each with separate runtime state and a writable layer.
+
+#### Details
+
+Compose is not required: repeat `docker run` to create new instances.
+Containers can still share volumes or networks. Publishing the same host
+address and port twice usually causes a conflict, so choose different
+host ports when necessary.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Да. Image — это шаблон, поэтому из одного и того же image можно
-создать любое количество независимых контейнеров. Docker Compose для
-этого не обязателен.**
-
 #### Ответ на собеседовании
 
-> Да, из одного Docker image можно создавать несколько контейнеров.
-> Каждый контейнер является отдельным экземпляром с собственным
-> состоянием выполнения, хотя все они основаны на одном image.
+> Да. Из одного образа можно создать много контейнеров, у каждого своё состояние выполнения и записываемый слой.
 
 #### Подробнее
 
@@ -710,42 +573,34 @@ created from the same image. Docker Compose is not required for this.**
 Docker Compose упрощает управление несколькими связанными сервисами, но
 сам механизм создания нескольких контейнеров от Compose не зависит.
 
+Контейнеры могут использовать общие тома и сети. Повторная публикация
+одного адреса и порта хоста обычно вызывает конфликт: при необходимости
+выбирают разные порты хоста.
+
 ---
 
 ## 13. What is a port? / Что такое порт?
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**A port is a numeric network address used to identify a particular
-service or process on a machine. An application listens on a port to
-accept network connections.**
-
 #### Interview answer
 
-> An IP address identifies a machine, while a port identifies a
-> particular network service on that machine. For example, a web server
-> inside a container may listen on port `80`.
+> A TCP or UDP port is a number used to identify a transport endpoint at an IP address. An application process listens on it, not the whole container.
 
 #### Details
 
 The entire container does not "run on a port." A process inside the
 container listens on a particular port.
 
+For example, nginx listens on TCP port 80. TCP 80 and UDP 80 are different
+endpoints. In bridge mode the container has its own network namespace;
+host networking is a different mode.
+
 ### 🇷🇺 Русский
-
-#### Быстро вспомнить
-
-**Порт — это числовой сетевой адрес конкретного сервиса или процесса
-на машине. Приложение слушает определенный порт, чтобы принимать сетевые
-соединения.**
 
 #### Ответ на собеседовании
 
-> IP-адрес позволяет определить машину, а номер порта — конкретный
-> сетевой сервис на этой машине. Например, веб-сервер внутри контейнера
-> может слушать порт `80`.
+> Порт TCP или UDP — номер транспортной конечной точки по IP-адресу. Его слушает процесс приложения, а не контейнер целиком.
 
 #### Подробнее
 
@@ -762,9 +617,10 @@ Container
     └── listens on port 80
 ```
 
-У контейнера есть собственное сетевое окружение. Если приложение внутри
-него слушает `80`, это еще не означает, что тот же сервис автоматически
-доступен через порт `80` хост-компьютера.
+TCP 80 и UDP 80 — разные конечные точки. В режиме bridge контейнер имеет
+собственный сетевой namespace; host networking работает иначе. Если
+приложение слушает `80` внутри bridge-контейнера, это не означает
+автоматической доступности через порт `80` хоста.
 
 ---
 
@@ -772,33 +628,22 @@ Container
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**Port mapping connects a host port to a container port. Traffic sent to
-the published host port is forwarded to the application listening on the
-corresponding port inside the container.**
-
 #### Interview answer
 
-> A container has its own network environment, so an application's
-> internal port is not automatically available through the host. With
-> `-p`, we can publish it, for example by mapping host port `8080` to
-> container port `80`.
+> Port publishing maps a host address and port to a container port. For example, -p 8080:80 forwards host port 8080 to container port 80.
+
+#### Details
+
+For default bridge networking: `browser → host:8080 → container:80 → nginx`.
+This publishes a host port, not a new application listener. On native
+Linux, the host may already reach a bridge container by its container IP
+without publishing; Docker Desktop networking differs.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Проброс порта связывает порт хост-машины с портом контейнера. Запрос,
-пришедший на опубликованный порт хоста, Docker направляет приложению,
-которое слушает соответствующий порт внутри контейнера.**
-
 #### Ответ на собеседовании
 
-> Контейнер имеет собственное сетевое окружение, поэтому внутренний порт
-> приложения не обязательно доступен с хоста. С помощью `-p` можно
-> опубликовать порт контейнера: например, связать порт `8080` хоста с
-> портом `80` контейнера.
+> Публикация порта связывает адрес и порт хоста с портом контейнера. Например, -p 8080:80 перенаправляет порт 8080 хоста на порт 80 контейнера.
 
 #### Подробнее
 
@@ -820,40 +665,34 @@ nginx
 слушает `80`, а Docker предоставляет путь к этому сервису через
 выбранный порт хоста.
 
+На обычном Linux-хосте bridge-контейнер может быть доступен по своему IP
+и без публикации. Публикация создаёт доступ через порт хоста; в Docker
+Desktop сетевые ограничения отличаются. Схема выше относится к bridge,
+а не ко всем сетевым режимам.
+
 ---
 
 ## 15. What does `docker run -p 8080:80 nginx` mean? / Что означает `docker run -p 8080:80 nginx`?
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**The command creates and starts a container from the `nginx` image and
-maps host port `8080` to container port `80`. A request to
-`localhost:8080` reaches nginx listening on port `80` inside the
-container.**
-
 #### Interview answer
 
-> `docker run` creates and starts the container, `-p` publishes a port,
-> `8080` is the host port, `80` is the container port, and `nginx` is
-> the image name. Traffic sent to host port `8080` is forwarded to port
-> `80` in the container.
+> It creates and starts an nginx container and publishes its TCP port 80 on host port 8080. By default, publishing binds all host addresses, not just localhost.
+
+#### Details
+
+The mapping is `HOST_PORT:CONTAINER_PORT`. With a local Docker daemon,
+visit `http://localhost:8080`. For a local-only example, use
+`docker run -p 127.0.0.1:8080:80 nginx`. Default bind settings can be
+changed, and remote accessibility also depends on routing and firewalls.
+With a remote daemon, the host port belongs to that remote host.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Команда создает и запускает контейнер из image `nginx` и связывает
-порт `8080` хоста с портом `80` контейнера. Обращение к `localhost:8080`
-попадает в nginx, который внутри контейнера слушает `80`.**
-
 #### Ответ на собеседовании
 
-> `docker run` создает и запускает контейнер, `-p` публикует порт,
-> `8080` — порт хоста, `80` — порт контейнера, а `nginx` — имя
-> image. Поэтому запрос на порт `8080` хоста Docker перенаправит на порт
-> `80` контейнера, где nginx принимает HTTP-запросы.
+> Команда создаёт и запускает nginx и публикует TCP-порт 80 контейнера на порту 8080 хоста. По умолчанию привязка охватывает все адреса хоста, не только localhost.
 
 #### Подробнее
 
@@ -879,38 +718,33 @@ http://localhost:8080
 «из всего интернета». Это зависит также от адреса привязки, сети хоста,
 firewall, инфраструктуры и других настроек.
 
+Без явно заданного адреса стандартная настройка публикует порт на всех
+адресах хоста. Для локального примера: `docker run -p 127.0.0.1:8080:80 nginx`.
+Настройку привязки по умолчанию можно изменить. При удалённом Docker
+daemon порт относится к удалённому хосту, а не к твоему компьютеру.
+
 ---
 
 ## 16. What is `EXPOSE` and how is it different from `-p`? / Что такое `EXPOSE` и чем он отличается от `-p`?
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**`EXPOSE` documents the port an application is expected to use inside
-the container, but it does not publish that port on the host by itself.
-`-p` creates the actual host-to-container port mapping.**
-
 #### Interview answer
 
-> `EXPOSE 80` documents that the application is expected to listen on
-> port `80` inside the image. To make it available through a host port,
-> we use `docker run -p`, for example `-p 8080:80`.
+> EXPOSE records the intended container port as image metadata. -p actually publishes a port; EXPOSE alone neither publishes it nor starts a listener.
+
+#### Details
+
+`EXPOSE 80` is not equivalent to `docker run -p 8080:80 my-app`.
+You can publish a port with `-p` even without EXPOSE. `-P` publishes
+exposed ports on automatically assigned host ports; `-p` uses an explicit
+mapping. The application still has to listen on the container port.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**`EXPOSE` в Dockerfile указывает, какой порт приложение предполагает
-использовать внутри контейнера, но сам по себе не публикует его на
-хосте. `-p` реально создает сопоставление порта хоста и контейнера.**
-
 #### Ответ на собеседовании
 
-> `EXPOSE 80` документирует, что приложение внутри image ожидается на
-> порту `80`. Чтобы сделать этот порт доступным через конкретный порт
-> хоста, при запуске используется `docker run -p`, например
-> `-p 8080:80`.
+> EXPOSE записывает предполагаемый порт контейнера в метаданные образа. -p публикует порт; сам EXPOSE не публикует его и не запускает слушающий процесс.
 
 #### Подробнее
 
@@ -927,24 +761,19 @@ docker run -p 8080:80 my-app
 Первое описывает предполагаемый внутренний порт. Второе настраивает
 публикацию порта при запуске контейнера.
 
+Для `-p` инструкция EXPOSE не обязательна. Ключ `-P` публикует exposed-порты
+на автоматически назначенных портах хоста, `-p` задаёт конкретное
+сопоставление. Приложение всё равно должно слушать порт контейнера.
+
 ---
 
 ## 17. What is Docker Compose? / Что такое Docker Compose?
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**Docker Compose lets us declaratively define and run multiple related
-containers or services together. Their configuration is stored in a YAML
-file.**
-
 #### Interview answer
 
-> Docker Compose is used for multi-service applications. A
-> `compose.yaml` file can define images or builds, ports, environment
-> variables, volumes, networks, and service relationships, and the
-> services can then be managed as one application.
+> Docker Compose defines and manages services, networks, and volumes in a YAML file. docker compose up creates and starts the configured application.
 
 #### Details
 
@@ -958,22 +787,38 @@ The modern command is:
 docker compose up
 ```
 
-The older `docker-compose` spelling is still commonly seen.
+The older `docker-compose` spelling belongs to the legacy standalone
+tool; use the command supported by the installed Compose version.
+Compose also works for a single service.
+
+A schematic file, not a complete runnable application:
+
+```yaml
+services:
+  web:
+    build: .
+    ports:
+      - "127.0.0.1:8080:80"
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a local test password}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+  db-data:
+```
+
+It needs the web Dockerfile, application connection settings, and a local
+test password. Do not commit real credentials. Starting a database does
+not mean it is ready: use a healthcheck and `depends_on` with
+`condition: service_healthy` when needed, plus application retry handling.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Docker Compose позволяет декларативно описать и вместе запускать
-несколько связанных контейнеров или сервисов. Их конфигурация хранится в
-YAML-файле.**
-
 #### Ответ на собеседовании
 
-> Docker Compose используется для приложений из нескольких сервисов. В
-> `compose.yaml` можно описать images или правила сборки, порты,
-> переменные окружения, volumes, сети и зависимости между сервисами, а
-> затем управлять ими как единым приложением.
+> Docker Compose описывает сервисы, сети и тома в YAML-файле и управляет ими. docker compose up создаёт и запускает настроенное приложение.
 
 #### Подробнее
 
@@ -986,20 +831,28 @@ PostgreSQL
 ```
 
 Вместо нескольких длинных `docker run` конфигурация описывается в одном
-файле:
+файле. Это схема, а не готовое запускаемое приложение:
 
 ``` yaml
 services:
   web:
     build: .
     ports:
-      - "8080:80"
+      - "127.0.0.1:8080:80"
 
   db:
-    image: postgres
+    image: postgres:17
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a local test password}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+  db-data:
 ```
 
-После этого сервисы можно запустить командой:
+Потребуются Dockerfile веб-приложения, его настройки подключения и
+локальный тестовый пароль. Реальные секреты коммитить нельзя.
+После настройки сервисы запускают командой:
 
 ```bash
 docker compose up
@@ -1008,41 +861,34 @@ docker compose up
 Современная команда — `docker compose` с пробелом. Старое отдельное
 приложение и команда часто встречаются как `docker-compose`.
 
+Compose работает и с одним сервисом. Запуск БД ещё не означает готовность:
+при необходимости используют healthcheck и `depends_on` с
+`condition: service_healthy`, а приложение должно обрабатывать повторы.
+Секрет через environment в примере — упрощение для локального теста,
+не рекомендация для production. Путь тома здесь относится к postgres:17.
+
 ---
 
 ## 18. Docker Compose vs `docker run` / Чем Docker Compose отличается от `docker run`?
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**`docker run` is convenient for starting and configuring individual
-containers from the command line. Docker Compose is more convenient when
-configuration for multiple related services needs to be stored and
-reproduced.**
-
 #### Interview answer
 
-> With `docker run`, containers can be started manually with
-> command-line options. Docker Compose stores application configuration
-> in a YAML file and makes it easy to start multiple related services
-> consistently with one command.
+> docker run creates one container using CLI options. Compose stores service configuration in YAML and manages related containers together.
+
+#### Details
+
+Both approaches can start many containers; Compose is not mandatory for
+that. It also manages shared networks and volumes. `docker compose up`
+reconciles service configuration and may recreate changed containers;
+`docker compose start` starts existing stopped containers.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**`docker run` удобно использовать для запуска и настройки отдельного
-контейнера из командной строки. Docker Compose удобнее, когда нужно
-хранить конфигурацию нескольких связанных сервисов и запускать их
-вместе.**
-
 #### Ответ на собеседовании
 
-> Через `docker run` можно вручную запускать отдельные контейнеры и
-> передавать им параметры. Docker Compose позволяет описать конфигурацию
-> приложения в YAML-файле и воспроизводимо запускать несколько связанных
-> сервисов одной командой.
+> docker run создаёт один контейнер с параметрами CLI. Compose хранит настройки сервисов в YAML и управляет связанными контейнерами вместе.
 
 #### Подробнее
 
@@ -1066,39 +912,32 @@ docker run → параметры в CLI
 Docker Compose → параметры в compose.yaml
 ```
 
+`docker compose up` приводит сервисы к описанной конфигурации и может
+пересоздать изменённые контейнеры. `docker compose start` запускает уже
+существующие остановленные контейнеры.
+
 ---
 
 ## 19. Why use Docker Compose? / Зачем нужен Docker Compose?
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**Docker Compose avoids keeping a multi-container application's
-configuration in a collection of long `docker run` commands. It makes
-service configuration explicit, reproducible, and easier to share.**
-
 #### Interview answer
 
-> Compose is especially useful for local development and testing of
-> multi-service applications. For example, a backend, database, and
-> other services can be defined in one configuration and started
-> together with `docker compose up`.
+> Compose makes a multi-service setup repeatable and easy to share. One file captures the configuration instead of several long run commands.
+
+#### Details
+
+A backend and database can share declared networks, volumes, environment
+settings, and healthchecks. `depends_on` in its short form controls startup
+order, not application readiness. Compose does not automatically provide
+the distributed scheduling and recovery guarantees of a cluster platform.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Docker Compose нужен, чтобы не хранить конфигурацию многоконтейнерного
-приложения в наборе длинных команд `docker run`. Он делает конфигурацию
-сервисов явной, повторяемой и удобной для командной работы.**
-
 #### Ответ на собеседовании
 
-> Compose особенно полезен для локальной разработки и тестирования
-> приложений из нескольких сервисов. Например, можно одной конфигурацией
-> определить backend, database и другие сервисы, их порты и окружение, а
-> затем запустить все командой `docker compose up`.
+> Compose делает запуск нескольких сервисов воспроизводимым и удобным для команды. Настройки хранятся в одном файле вместо нескольких длинных команд.
 
 #### Подробнее
 
@@ -1111,24 +950,19 @@ service configuration explicit, reproducible, and easier to share.**
 -   какие volumes используются;
 -   в каких сетях работают сервисы.
 
+Краткая форма `depends_on` задаёт порядок запуска, но не проверяет
+готовность приложения. Compose сам по себе не даёт распределённого
+размещения и восстановления, как кластерная платформа.
+
 ---
 
 ## 20. What is a runtime? / Что такое runtime?
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**A runtime, when referring to a runtime environment, is the software
-environment required to execute a program. For example, Python, Node.js,
-and the JVM provide execution environments for their respective code.**
-
 #### Interview answer
 
-> A runtime is an execution environment that provides the mechanisms and
-> components required to run a program. For example, Python code needs
-> the Python interpreter, Java bytecode runs on the JVM, and server-side
-> JavaScript can run in Node.js.
+> A runtime provides what a program needs to execute, such as Python's interpreter or the JVM. A container runtime is software that starts and manages containers.
 
 #### Details
 
@@ -1150,24 +984,15 @@ a lower level.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Runtime в значении среды выполнения — это программная среда,
-необходимая для выполнения программы. Например, Python interpreter,
-Node.js или JVM обеспечивают выполнение соответствующего кода.**
-
 #### Ответ на собеседовании
 
-> Runtime — это среда выполнения, которая предоставляет механизм и
-> необходимые компоненты для запуска программы. Например, Python-коду
-> нужен интерпретатор Python, Java bytecode выполняется JVM, а
-> JavaScript вне браузера может выполняться в Node.js.
+> Runtime обеспечивает выполнение программы: например, интерпретатор Python или JVM. Container runtime — ПО для запуска и управления контейнерами.
 
 #### Подробнее
 
 Слово `runtime` используется в нескольких близких значениях.
 
-### 1. Runtime как период выполнения
+##### 1. Runtime как период выполнения
 
 Фраза:
 
@@ -1187,7 +1012,7 @@ at build time
 
 — во время сборки.
 
-### 2. Runtime environment
+##### 2. Runtime environment
 
 Это среда, в которой выполняется программа.
 
@@ -1199,7 +1024,7 @@ Java → JVM
 JavaScript server application → Node.js
 ```
 
-### 3. Container runtime
+##### 3. Container runtime
 
 В Docker-контексте можно встретить и отдельное понятие
 `container runtime` — программный компонент, отвечающий за
@@ -1213,33 +1038,22 @@ JavaScript server application → Node.js
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**Dependencies are external libraries, packages, or other components an
-application relies on. A dependency's version is a property of the
-dependency, not the dependency itself.**
-
 #### Interview answer
 
-> Dependencies are components an application requires to work, such as
-> libraries and packages. Docker helps create a predictable environment
-> where the required dependencies are installed in the expected
-> versions.
+> Dependencies are components an application needs, such as libraries or packages. Specifying their versions helps reproduce the environment.
+
+#### Details
+
+For example, a Python application may depend on Flask or requests. A
+dependency is a component, not its version. Pin and test compatible
+versions, including transitive dependencies; lockfiles or constraints
+help. Pinning does not replace security updates or vulnerability checks.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Dependencies — это внешние библиотеки, пакеты и другие компоненты,
-от которых зависит работа приложения. Версия зависимости —
-характеристика зависимости, а не сама зависимость.**
-
 #### Ответ на собеседовании
 
-> Dependencies — это компоненты, которые приложение использует для
-> своей работы, например библиотеки и пакеты. Docker помогает
-> подготовить предсказуемое окружение, в котором нужные зависимости
-> установлены в ожидаемых версиях.
+> Зависимости — компоненты, необходимые приложению, например библиотеки и пакеты. Указание версий помогает воспроизводить окружение.
 
 #### Подробнее
 
@@ -1253,14 +1067,9 @@ pandas
 
 Это его зависимости.
 
-Версии:
-
-```text
-Flask==3.0.0
-requests==2.32.0
-```
-
-позволяют точнее зафиксировать окружение.
+Закрепляй и проверяй совместимые версии, включая транзитивные зависимости;
+для этого полезны lockfiles или constraints. Закрепление не заменяет
+обновлений безопасности и проверки уязвимостей.
 
 Важно не говорить, что dependency — это просто «версия программы».
 Dependency — сам внешний компонент, а версия определяет, какой именно
@@ -1272,39 +1081,24 @@ Dependency — сам внешний компонент, а версия опр�
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**A Docker image consists of layers — immutable filesystem parts
-created during the build process. Many Dockerfile instructions result in
-a new image layer.**
-
 #### Interview answer
 
-> A layer is a part of a Docker image representing filesystem changes
-> from a particular build step. Docker can reuse cached layers, which
-> can make subsequent builds faster.
+> An image layer records filesystem changes. Layers can be shared and reused; not every Dockerfile instruction adds a filesystem layer.
 
 #### Details
 
 A layer is not the same thing as a dependency.
 
-Layers provide caching and reuse. Different images can also share common
-base layers.
+Different images can share base layers; a base image itself often contains
+several layers. `COPY` and `RUN` commonly change the filesystem, while
+`CMD` and `EXPOSE` set metadata. Cache reuse depends on instruction inputs
+and cache validity, not only identical Dockerfile text.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Docker image состоит из слоев — неизменяемых частей файловой
-системы, создаваемых в процессе сборки. Многие инструкции Dockerfile
-приводят к созданию нового слоя.**
-
 #### Ответ на собеседовании
 
-> Layer — это часть Docker image, представляющая изменения файловой
-> системы на определенном этапе сборки. Docker может переиспользовать
-> уже созданные слои из кэша, поэтому повторные сборки могут выполняться
-> быстрее.
+> Слой образа хранит изменения файловой системы. Слои можно переиспользовать; не каждая инструкция Dockerfile добавляет файловый слой.
 
 #### Подробнее
 
@@ -1325,19 +1119,24 @@ COPY . .
 Layer 4 → application files
 Layer 3 → installed Python packages
 Layer 2 → requirements.txt
-Layer 1 → base Python image
+Base    → Python image (usually multiple layers)
 ```
 
 Слои дают два важных преимущества:
 
-1.  **Кэширование.** Если ранние инструкции не изменились, Docker может
-    использовать их результат повторно.
+1.  **Кэширование.** Если входы шага не изменились и кеш пригоден, Docker
+    может использовать результат повторно. Одного совпадения текста
+    Dockerfile недостаточно.
 2.  **Переиспользование.** Разные images могут использовать общие
     базовые слои.
 
 Не буквально каждая инструкция Dockerfile создает файловый слой, поэтому
 на собеседовании безопаснее говорить: **многие инструкции сборки
 формируют слои image**.
+
+Например, `COPY` и `RUN` обычно меняют файловую систему, а `CMD` и
+`EXPOSE` записывают метаданные. Базовый Python-образ сам обычно состоит
+из нескольких слоёв, а не из одного.
 
 ---
 
@@ -1482,3 +1281,11 @@ Runtime       → среда выполнения программы
 Dependencies  → компоненты, необходимые приложению
 Layers        → части Docker image, формируемые при сборке
 ```
+
+## References / Источники
+
+Technical review: 2026-11-03. / Техническая проверка: 2026-11-03.
+
+- [Containers and VMs](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/), [Docker Desktop VM](https://docs.docker.com/desktop/troubleshoot-and-support/faqs/linuxfaqs/), [container storage](https://docs.docker.com/engine/storage/).
+- [Dockerfile reference](https://docs.docker.com/reference/dockerfile/), [image layers](https://docs.docker.com/get-started/docker-concepts/building-images/understanding-image-layers/), [docker run](https://docs.docker.com/engine/containers/run/).
+- [Port publishing](https://docs.docker.com/engine/network/port-publishing/), [Compose startup order](https://docs.docker.com/compose/how-tos/startup-order/), [PostgreSQL official image](https://hub.docker.com/_/postgres).

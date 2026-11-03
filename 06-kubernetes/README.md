@@ -1,6 +1,15 @@
 # Kubernetes for Technical Writer Interviews
 
-Five reusable questions and five published interview scenarios. English comes first; Russian is a separate support block. The scenario wording is condensed from candidate/interviewer reports, not presented as a verbatim transcript. These reports mostly concern engineering or DevOps roles, so answer at a technical writer's level: explain the mechanism, read a manifest, and know what to verify.
+Five fundamentals and five troubleshooting scenarios. English comes first;
+Russian follows. Technical explanations were reviewed against Kubernetes
+documentation on 2026-11-03. The readiness exercise in question 9 was
+reverified; several earlier interview-source links were inaccessible and
+are marked unverified. Do not present those questions as confirmed transcripts.
+
+Пять базовых вопросов и пять сценариев диагностики. Технические объяснения
+сверены с документацией Kubernetes 2026-11-03. Задание о readiness в
+вопросе 9 подтверждено повторно; недоступные старые источники отмечены.
+Их формулировки нельзя выдавать за подтверждённые вопросы интервью.
 
 ---
 
@@ -10,262 +19,250 @@ Five reusable questions and five published interview scenarios. English comes fi
 
 ### 🇬🇧 English
 
-#### Quick recall
-**Kubernetes coordinates containerized workloads across a cluster.**
-
 #### Interview answer
-> It lets a team declare the desired state of an application, such as how many replicas should run. Controllers work to bring the actual state toward that declaration. Kubernetes also supports service discovery, rollout, and recovery from some failures.
+
+> Kubernetes manages containerized workloads toward a declared desired state. It schedules Pods and supports scaling, rollouts, and recovery from failures.
 
 #### Details
+
 It does not build container images or make an unhealthy application correct. Documentation must say what the cluster manages and what the application owner must configure.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-**Kubernetes управляет контейнерными приложениями в кластере.**
-
 #### Ответ на собеседовании
-> Команда задаёт желаемое состояние приложения, например число копий. Контроллеры стараются привести фактическое состояние к заданному. Платформа также помогает обнаруживать сервисы, обновлять приложения и восстанавливаться после части сбоев.
+
+> Kubernetes управляет контейнеризированными нагрузками согласно заданному состоянию. Он размещает Pod, поддерживает масштабирование, обновление и восстановление после сбоев.
 
 #### Подробнее
+
 Kubernetes не собирает образы и не исправляет ошибки самого приложения. В документации важно отделять ответственность кластера от настроек приложения.
 
-**Interview evidence / Источник вопроса:** [Interviewer reports asking about Kubernetes concepts](https://www.reddit.com/r/kubernetes/comments/1twmuse/). **Technical reference / Справка:** [Kubernetes overview](https://kubernetes.io/docs/concepts/overview/).
+**Earlier source, not reverified / Старый источник, не подтверждён повторно (2026-11-03):** [Previously cited page / Ранее указанная страница](https://www.reddit.com/r/kubernetes/comments/1twmuse/). **Technical reference / Справка:** [Kubernetes overview](https://kubernetes.io/docs/concepts/overview/).
 
 ## 2. How do a Pod, Deployment, and Service differ? / Чем различаются Pod, Deployment и Service?
 
 ### 🇬🇧 English
 
-#### Quick recall
-**A Pod runs containers; a Deployment manages Pods; a Service provides a stable way to reach backends.**
-
 #### Interview answer
-> A Pod is the smallest deployable compute object. A Deployment describes and updates a set of Pods through ReplicaSets. A Service abstracts access to matching backends, commonly Pods, even when individual Pods are replaced.
+
+> A Pod runs one or more closely coupled containers. A Deployment manages replicated Pods; a Service provides a stable way to reach eligible backends.
 
 #### Details
+
 Do not call a Service a container or a Deployment a server. A Deployment is usually for stateless workloads; other controllers exist for different needs.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-**Pod запускает контейнеры, Deployment управляет Pod, Service даёт стабильный способ доступа.**
-
 #### Ответ на собеседовании
-> Pod — минимальная единица запуска. Deployment задаёт и обновляет набор Pod через ReplicaSet. Service скрывает изменчивость отдельных Pod и направляет обращения к подходящим экземплярам.
+
+> Pod запускает один или несколько тесно связанных контейнеров. Deployment управляет копиями Pod, Service предоставляет стабильный способ обращения к подходящим экземплярам.
 
 #### Подробнее
+
 Service — не контейнер, а Deployment — не сервер. Для других типов нагрузок существуют иные контроллеры.
 
-**Interview evidence / Источник вопроса:** [Interviewer reports asking this exact comparison](https://www.reddit.com/r/kubernetes/comments/1eial2s/). **Technical references / Справка:** [Pods](https://kubernetes.io/docs/concepts/workloads/pods/), [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Services](https://kubernetes.io/docs/concepts/services-networking/service/).
+**Earlier source, not reverified / Старый источник, не подтверждён повторно (2026-11-03):** [Previously cited page / Ранее указанная страница](https://www.reddit.com/r/kubernetes/comments/1eial2s/). **Technical references / Справка:** [Pods](https://kubernetes.io/docs/concepts/workloads/pods/), [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), [Services](https://kubernetes.io/docs/concepts/services-networking/service/).
 
 ## 3. What are a cluster, node, and control plane? / Что такое кластер, узел и control plane?
 
 ### 🇬🇧 English
 
-#### Quick recall
-**A cluster contains nodes; the control plane manages cluster state; worker nodes run workloads.**
-
 #### Interview answer
-> The control plane exposes the API, stores cluster state, schedules work, and runs controllers. Worker nodes run Pods using a container runtime and node components. The distinction helps locate whether a problem is in configuration, scheduling, or application runtime.
+
+> A cluster includes a control plane and nodes. The control plane coordinates desired state and scheduling; nodes run Pods.
 
 #### Details
+
 This is a conceptual map, not a claim that every cluster has identical topology. Managed Kubernetes can hide much of the control plane from users.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-**Кластер состоит из узлов; control plane управляет состоянием, рабочие узлы запускают приложения.**
-
 #### Ответ на собеседовании
-> Control plane предоставляет API, хранит состояние кластера, планирует размещение и запускает контроллеры. На рабочих узлах выполняются Pod. Это разделение помогает понять, где искать проблему: в конфигурации, размещении или приложении.
+
+> Кластер состоит из control plane и узлов. Control plane управляет желаемым состоянием и размещением, узлы выполняют Pod.
 
 #### Подробнее
+
 Реальная топология зависит от установки. В управляемом Kubernetes пользователь может не иметь прямого доступа к компонентам control plane.
 
-**Interview evidence / Источник вопроса:** [Interview report mentions control-plane questions](https://www.reddit.com/r/kubernetes/comments/1twmuse/). **Technical reference / Справка:** [Kubernetes components](https://kubernetes.io/docs/concepts/overview/components/).
+**Earlier source, not reverified / Старый источник, не подтверждён повторно (2026-11-03):** [Previously cited page / Ранее указанная страница](https://www.reddit.com/r/kubernetes/comments/1twmuse/). **Technical reference / Справка:** [Kubernetes components](https://kubernetes.io/docs/concepts/overview/components/).
 
 ## 4. How does a Service find Pods? / Как Service находит Pod?
 
 ### 🇬🇧 English
 
-#### Quick recall
-**Usually through label selectors and ready endpoints.**
-
 #### Interview answer
-> A Service commonly selects Pods whose labels match its selector. Kubernetes maintains EndpointSlices for those backends, and traffic goes to eligible endpoints. If a selector or target port is wrong, the Service may exist while requests still fail.
+
+> Usually, a Service selects Pods by labels. EndpointSlices describe its backends; readiness and port configuration affect whether traffic reaches the application.
 
 #### Details
+
 Services can also exist without selectors, so “always” would be inaccurate. Check namespace, selector, Pod labels, readiness, and `port` versus `targetPort` when documenting a route.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-**Обычно через селекторы меток и доступные конечные точки.**
-
 #### Ответ на собеседовании
-> Service обычно выбирает Pod по совпадению меток с селектором. Kubernetes поддерживает EndpointSlice с адресами подходящих экземпляров. Неверный селектор или порт может оставить Service существующим, но недоступным для запросов.
+
+> Обычно Service выбирает Pod по меткам. EndpointSlice описывает конечные точки; готовность и настройки портов влияют на доставку трафика приложению.
 
 #### Подробнее
+
 Service бывает и без селектора. При проверке смотрим namespace, метки, готовность Pod, а также `port` и `targetPort`.
 
-**Interview evidence / Источник вопроса:** [Candidate reports a Service-manifest interview question](https://www.reddit.com/r/devops/comments/198zj1m/). **Technical reference / Справка:** [Kubernetes Service](https://kubernetes.io/docs/concepts/services-networking/service/).
+**Earlier source, not reverified / Старый источник, не подтверждён повторно (2026-11-03):** [Previously cited page / Ранее указанная страница](https://www.reddit.com/r/devops/comments/198zj1m/). **Technical reference / Справка:** [Kubernetes Service](https://kubernetes.io/docs/concepts/services-networking/service/).
 
 ## 5. What are ConfigMaps, Secrets, and probes? / Что такое ConfigMap, Secret и пробы?
 
 ### 🇬🇧 English
 
-#### Quick recall
-**ConfigMaps hold non-secret configuration; Secrets hold sensitive values; probes report container health or readiness.**
-
 #### Interview answer
-> A ConfigMap can supply configuration without rebuilding an image. A Secret is the dedicated API object for sensitive values, but still requires access controls and encryption-at-rest decisions. Readiness controls whether a Pod receives Service traffic; liveness can trigger a container restart; startup protects slow-starting containers.
+
+> ConfigMaps hold non-sensitive configuration; Secrets hold sensitive values. Readiness gates normal Service traffic, liveness detects when to restart, and startup allows initialization time.
 
 #### Details
-Base64 in a Secret manifest is encoding, not encryption. Never paste real credentials into examples.
+
+Base64 is encoding, not encryption. Secret storage needs encryption-at-rest configuration and restricted access; never paste real credentials into examples. ConfigMap values injected as environment variables do not refresh automatically: recreate the Pods to pick up new values.
+
+A failed readiness probe normally removes a Pod from regular Service traffic without restarting it; special Service settings can override this. Startup probes delay liveness and readiness until startup succeeds. Repeated startup or liveness failures can cause a restart according to policy.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-**ConfigMap хранит обычную конфигурацию, Secret — чувствительные значения, пробы проверяют состояние контейнера.**
-
 #### Ответ на собеседовании
-> ConfigMap позволяет менять настройки без пересборки образа. Secret предназначен для чувствительных данных, но сам по себе не отменяет контроля доступа и защиты при хранении. Readiness влияет на получение трафика, liveness может перезапустить контейнер, startup учитывает долгий запуск.
+
+> ConfigMap хранит обычные настройки, Secret — чувствительные данные. Readiness регулирует обычный трафик Service, liveness определяет необходимость перезапуска, startup даёт время на запуск.
 
 #### Подробнее
-Base64 в манифесте Secret — кодирование, не шифрование. В примерах нельзя публиковать реальные ключи.
 
-**Interview evidence / Источник вопроса:** [Interview discussion of Secrets and Pod networking](https://www.reddit.com/r/kubernetes/comments/1h2it1f/). **Technical references / Справка:** [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/), [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/), [Probes](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/).
+Base64 — кодирование, не шифрование. Для Secret нужны настройки шифрования при хранении и ограничения доступа; реальные ключи в примерах недопустимы. Значения ConfigMap в переменных окружения не обновляются автоматически: для новых значений Pod пересоздают.
+
+Неуспешная readiness-проба обычно исключает Pod из обычного трафика Service, но не перезапускает его; особые настройки Service могут менять это поведение. Startup-проба откладывает liveness и readiness до успешного запуска. Повторные ошибки startup или liveness могут привести к перезапуску согласно политике.
+
+**Earlier source, not reverified / Старый источник, не подтверждён повторно (2026-11-03):** [Previously cited page / Ранее указанная страница](https://www.reddit.com/r/kubernetes/comments/1h2it1f/). **Technical references / Справка:** [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/), [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/), [Probes](https://kubernetes.io/docs/concepts/workloads/pods/probes/).
 
 ---
 
-**Published scenarios / Опубликованные ситуации**
+**Practice scenarios; see source status / Сценарии: см. статус источника**
 
 ## 6. Explain how this Service manifest reaches Pods. / Объясните, как этот Service направляет запросы к Pod.
 
 ### 🇬🇧 English
 
-#### Quick recall
-**Trace selector → Pod labels → eligible endpoints → target port.**
-
 #### Interview answer
-> I would first identify the Service's namespace, type, selector, and ports. Then I would compare the selector to Pod labels, inspect the endpoints, and confirm that `targetPort` reaches the application's listening port. A valid YAML file alone does not prove connectivity.
+
+> I would trace namespace, selector, Pod labels, endpoints, and targetPort. Valid YAML alone does not prove that the application is reachable.
 
 #### Details
+
 If the task gives no manifest, ask for it rather than inventing labels or port numbers.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-**Идём по цепочке: селектор → метки Pod → доступные адреса → целевой порт.**
-
 #### Ответ на собеседовании
-> Сначала посмотрю namespace, тип Service, селектор и порты. Затем сверю селектор с метками Pod, проверю конечные точки и порт, который слушает приложение. Корректный YAML ещё не доказывает доступность сервиса.
+
+> Я проверю namespace, селектор, метки Pod, конечные точки и targetPort. Корректный YAML сам по себе не доказывает доступность приложения.
 
 #### Подробнее
+
 Если манифест не дан, лучше запросить его, а не придумывать метки и порты.
 
-**Interview evidence / Источник задания:** [Candidate describes a Service-manifest question](https://www.reddit.com/r/devops/comments/198zj1m/). **Technical reference / Справка:** [Services](https://kubernetes.io/docs/concepts/services-networking/service/).
+**Earlier source, not reverified / Старый источник, не подтверждён повторно (2026-11-03):** [Previously cited page / Ранее указанная страница](https://www.reddit.com/r/devops/comments/198zj1m/). **Technical reference / Справка:** [Services](https://kubernetes.io/docs/concepts/services-networking/service/).
 
 ## 7. A Pod is failing. Where do you start? / Pod не работает. С чего начнёте?
 
 ### 🇬🇧 English
 
-#### Quick recall
-**Status, events, logs, then the relevant manifest and dependencies.**
-
 #### Interview answer
-> I would inspect `kubectl get pod`, `kubectl describe pod`, and `kubectl logs`; for a restarted container I would check `kubectl logs --previous`. Events can reveal scheduling or image-pull problems, while logs often reveal application startup errors. I would test one hypothesis at a time.
+
+> I would check Pod status, events, and container logs. For a restarted container, I would also inspect its previous logs before choosing a fix.
 
 #### Details
-Do not prescribe a restart as the universal fix. In user docs, separate symptoms, checks, likely causes, and corrective actions.
+
+Use `kubectl get pod NAME -n NS`, `kubectl describe pod NAME -n NS`, and `kubectl logs NAME -n NS -c CONTAINER`. Add `--previous` for the previous terminated container instance. Replace placeholders with actual names. A restart is not a universal fix; separate symptoms, checks, causes, and corrective actions.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-**Статус, события, логи, затем манифест и зависимости.**
-
 #### Ответ на собеседовании
-> Посмотрю `kubectl get pod`, `kubectl describe pod` и `kubectl logs`. Если контейнер уже перезапускался, проверю `kubectl logs --previous`. События часто показывают ошибки размещения или скачивания образа, а логи — ошибки запуска приложения. Проверять буду по одной гипотезе.
+
+> Я проверю статус Pod, события и логи контейнера. После перезапуска также посмотрю предыдущие логи, прежде чем выбирать исправление.
 
 #### Подробнее
-Перезапуск — не универсальное решение. В документации нужно разделять симптомы, проверки, причины и действия.
 
-**Interview evidence / Источник задания:** [Interviewer reports a failing-Pod troubleshooting prompt](https://www.reddit.com/r/kubernetes/comments/1eial2s/). **Technical reference / Справка:** [Debug running Pods](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/).
+Команды: `kubectl get pod NAME -n NS`, `kubectl describe pod NAME -n NS`, `kubectl logs NAME -n NS -c CONTAINER`. Ключ `--previous` показывает логи предыдущего завершённого экземпляра контейнера. Подставь реальные имена. Перезапуск не универсален: разделяй симптомы, проверки, причины и действия.
+
+**Earlier source, not reverified / Старый источник, не подтверждён повторно (2026-11-03):** [Previously cited page / Ранее указанная страница](https://www.reddit.com/r/kubernetes/comments/1eial2s/). **Technical reference / Справка:** [Debug running Pods](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/).
 
 ## 8. A Deployment's container crash-loops after an environment change. What do you check? / Контейнер после смены переменной окружения постоянно перезапускается. Что проверить?
 
 ### 🇬🇧 English
 
-#### Quick recall
-**Compare the new configuration with logs and the last working revision.**
-
 #### Interview answer
-> I would inspect Pod events and previous-container logs, verify the environment variable's name and source, and check whether the app can start with that value. If the rollout is harming users, I would coordinate a rollback to a known-good revision while investigating the change.
+
+> I would compare the changed configuration with previous logs and startup requirements. If users are affected, I would coordinate recovery to a verified working configuration.
 
 #### Details
-The reported exercise used a bad environment variable or port. Do not claim every `CrashLoopBackOff` is caused by one of these; it is a restart-backoff symptom.
+
+`CrashLoopBackOff` means a delay between repeated container restarts, not a root cause. Check configuration, application errors, OOM termination, and probes. A wrong Service port alone does not normally crash the process. Deployment rollback does not restore a separately edited ConfigMap or Secret.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-**Сравнить новую конфигурацию, логи и последнюю рабочую версию.**
-
 #### Ответ на собеседовании
-> Проверю события и логи предыдущего запуска контейнера, имя и источник переменной окружения, затем поведение приложения с этим значением. Если обновление ломает сервис, согласую откат на рабочую ревизию и продолжу разбор причины.
+
+> Я сопоставлю изменённую конфигурацию с предыдущими логами и требованиями запуска. Если затронуты пользователи, согласую восстановление проверенной рабочей конфигурации.
 
 #### Подробнее
-В опубликованном задании причина была в переменной окружения или порте. Но `CrashLoopBackOff` — симптом повторных неудачных запусков, а не название конкретной причины.
 
-**Interview evidence / Источник задания:** [Interviewer describes a crash-looping Deployment exercise](https://www.reddit.com/r/kubernetes/comments/1r19nhi/). **Technical references / Справка:** [Pod lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/), [Deployment rollback](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-back-a-deployment).
+`CrashLoopBackOff` означает задержку между повторными перезапусками, а не конкретную причину. Проверь конфигурацию, ошибки приложения, OOM и пробы. Неверный порт Service сам по себе обычно не завершает процесс. Откат Deployment не восстановит отдельно изменённый ConfigMap или Secret.
+
+**Earlier source, not reverified / Старый источник, не подтверждён повторно (2026-11-03):** [Previously cited page / Ранее указанная страница](https://www.reddit.com/r/kubernetes/comments/1r19nhi/). **Technical references / Справка:** [Pod lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/), [Deployment rollback](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-back-a-deployment).
 
 ## 9. A Deployment was applied but Pods are not ready. What do you inspect? / Deployment применён, но Pod не готовы. Что проверить?
 
 ### 🇬🇧 English
 
-#### Quick recall
-**Check desired versus available replicas, then Pod state and events.**
-
 #### Interview answer
-> I would inspect the Deployment rollout, its ReplicaSet, and the Pods it owns. A Pod might be Pending because it cannot be scheduled, fail image pull, crash, or run but fail readiness. Each state points to a different next check; the Deployment's existence does not mean the application is serving traffic.
+
+> I would inspect rollout status, ReplicaSets, Pod events, and readiness. Scheduling, image pulling, startup, and readiness failures require different checks.
 
 #### Details
+
 Useful commands include `kubectl rollout status deployment/NAME`, `kubectl describe deployment NAME`, and `kubectl describe pod NAME`.
+
+In the linked interviewer's exercise, readiness runs `stat /tmp/ready`; the Pod stays unready while that file is missing. This question broadens that specific exercise into a troubleshooting approach; it is not a verbatim prompt.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-**Сверить нужное и доступное число реплик, затем изучить Pod и события.**
-
 #### Ответ на собеседовании
-> Посмотрю статус обновления Deployment, его ReplicaSet и созданные Pod. Pod может не разместиться, не скачать образ, завершаться с ошибкой или работать, но не проходить readiness. Для каждого случая следующий шаг разный; существование Deployment не означает, что приложение принимает трафик.
+
+> Я проверю rollout, ReplicaSet, события Pod и readiness. Ошибки размещения, скачивания образа, запуска и готовности требуют разных проверок.
 
 #### Подробнее
+
 Полезны `kubectl rollout status deployment/NAME`, `kubectl describe deployment NAME` и `kubectl describe pod NAME`.
 
-**Interview evidence / Источник задания:** [Candidate describes a not-ready Deployment manifest exercise](https://www.reddit.com/r/kubernetes/comments/1ka02oz/). **Technical reference / Справка:** [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
+В задании интервьюера по ссылке readiness выполняет `stat /tmp/ready`: пока файла нет, Pod не готов. Здесь конкретное задание расширено до подхода к диагностике; это не дословный вопрос.
+
+**Interview evidence / Источник задания:** [Interviewer describes a readiness-probe exercise](https://www.reddit.com/r/kubernetes/comments/1ka02oz/). **Technical reference / Справка:** [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 
 ## 10. How would you explain a rolling update and rollback? / Как объяснить поэтапное обновление и откат?
 
 ### 🇬🇧 English
 
-#### Quick recall
-**A rolling update gradually replaces Pods; a rollback returns to an earlier Deployment revision.**
-
 #### Interview answer
-> A Deployment can create a new ReplicaSet and replace old Pods gradually, constrained by its rollout strategy. I would watch progress and readiness, then use rollout history and rollback if the new revision is faulty. I would also explain what a rollback does not undo, such as external data changes.
+
+> A rolling update gradually replaces old Pods. A Deployment rollback restores an earlier Pod template, not external database or configuration changes.
 
 #### Details
+
 Avoid promising zero downtime without checking capacity, probes, application behavior, and database compatibility.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-**Поэтапное обновление постепенно заменяет Pod, откат возвращает прежнюю ревизию Deployment.**
-
 #### Ответ на собеседовании
-> Deployment может создать новую ReplicaSet и постепенно заменить старые Pod в соответствии со стратегией обновления. Я буду следить за статусом и готовностью, а при ошибке воспользуюсь историей ревизий и откатом. Важно отдельно учитывать изменения внешних данных, которые откат Deployment не отменяет.
+
+> Rolling update постепенно заменяет старые Pod. Откат Deployment возвращает прежний шаблон Pod, но не внешние изменения базы или конфигурации.
 
 #### Подробнее
+
 Нельзя обещать отсутствие простоя без проверки ресурсов, проб, поведения приложения и совместимости схемы данных.
 
-**Interview evidence / Источник вопроса:** [Interview report includes rolling-update questions](https://www.reddit.com/r/kubernetes/comments/1twmuse/). **Technical reference / Справка:** [Updating a Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment).
+**Earlier source, not reverified / Старый источник, не подтверждён повторно (2026-11-03):** [Previously cited page / Ранее указанная страница](https://www.reddit.com/r/kubernetes/comments/1twmuse/). **Technical reference / Справка:** [Updating a Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment).

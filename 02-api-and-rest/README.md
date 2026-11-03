@@ -6,8 +6,8 @@ It covers the practical basics: API concepts, REST, SOAP, GraphQL, endpoints, HT
 
 Each question contains two separate language blocks. English is the primary version and comes first:
 
-- 🇬🇧 **English** — quick recall, interview answer, details.
-- 🇷🇺 **Русский** — быстро вспомнить, ответ на собеседовании, подробнее.
+- 🇬🇧 **English** — short interview answer, details.
+- 🇷🇺 **Русский** — короткий ответ на собеседовании, подробнее.
 
 ---
 
@@ -15,19 +15,9 @@ Each question contains two separate language blocks. English is the primary vers
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**An API is a programming interface that defines rules for communication
-between software components. It allows one system to access data or
-functionality from another without knowing its internal
-implementation.**
-
 #### Interview answer
 
-> API stands for Application Programming Interface. It is a set of rules
-> and mechanisms that allows software systems to interact with each
-> other. A client can request data or perform an operation without
-> knowing how the other system is implemented internally.
+> An API is a contract for interacting with software: available operations, required inputs, and expected outputs. Clients use it without knowing the implementation.
 
 #### Details
 
@@ -45,20 +35,9 @@ application through library interfaces.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**API — это программный интерфейс, который определяет правила
-взаимодействия между программами. Он позволяет одной системе получать
-данные или вызывать функции другой системы, не зная, как она устроена
-внутри.**
-
 #### Ответ на собеседовании
 
-> API, или Application Programming Interface, — это набор правил и
-> способов взаимодействия между программами. Одна программа может
-> отправить запрос другой системе, получить данные или выполнить
-> определенное действие, при этом ей не нужно знать внутреннюю
-> реализацию этой системы.
+> API — контракт взаимодействия с программой: доступные операции, входные данные и результаты. Клиенту не нужно знать внутреннюю реализацию.
 
 #### Подробнее
 
@@ -81,19 +60,9 @@ API не обязательно работает через интернет. AP
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**APIs can be classified in different ways. For example, Web APIs are
-used for network communication and Library APIs expose functionality
-inside code; common approaches to web APIs include REST, SOAP, and
-GraphQL.**
-
 #### Interview answer
 
-> There are different types of APIs. Web APIs are used for communication
-> between applications over a network, usually via HTTP, while Library
-> APIs expose functions and classes directly to code. Common approaches
-> to web APIs include REST, SOAP, and GraphQL.
+> APIs can expose local library functions or remote services. REST, SOAP, and GraphQL describe different approaches to designing or interacting with APIs.
 
 #### Details
 
@@ -105,24 +74,14 @@ REST is an architectural style commonly used for HTTP APIs. SOAP is a
 protocol with strict rules and XML messages. GraphQL is a query language
 and API approach that lets clients specify exactly which data they need.
 
-For a junior or middle interview, a high-level understanding of these
-differences and a stronger understanding of REST is usually enough.
+Another classification is by audience: public, partner, or internal APIs.
+This is independent of the API's protocol or architectural style.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**API можно классифицировать по-разному. Например, бывают Web API для
-взаимодействия по сети и Library API для работы с библиотеками в коде;
-среди распространенных подходов к веб-API — REST, SOAP и GraphQL.**
-
 #### Ответ на собеседовании
 
-> API бывают разных типов. Например, Web API используются для
-> взаимодействия приложений по сети, обычно через HTTP, а Library API
-> предоставляют функции и классы для использования непосредственно в
-> коде. Среди распространенных подходов к созданию веб-API я знаю REST,
-> SOAP и GraphQL.
+> API может предоставлять функции локальной библиотеки или удалённого сервиса. REST, SOAP и GraphQL — разные подходы к устройству API и работе с ним.
 
 #### Подробнее
 
@@ -135,8 +94,8 @@ SOAP — отдельный протокол со строгими правил�
 GraphQL — язык запросов и подход к API, в котором клиент может точно
 указать, какие данные ему нужны.
 
-На junior/middle собеседовании обычно достаточно понимать эти различия
-на верхнем уровне и уметь подробнее объяснить REST.
+Другая классификация — по аудитории: публичные, партнёрские и внутренние
+API. Она не зависит от протокола или архитектурного стиля.
 
 ---
 
@@ -144,19 +103,9 @@ GraphQL — язык запросов и подход к API, в котором 
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**REST is an architectural style for designing APIs. In REST, data is
-represented as resources identified by URIs, and operations are usually
-expressed through standard HTTP methods such as GET, POST, PUT, PATCH,
-and DELETE.**
-
 #### Interview answer
 
-> A REST API is an API designed according to REST principles. Clients
-> usually work with resources through URIs and use standard HTTP
-> methods: for example, GET to retrieve data, POST to create it, PUT or
-> PATCH to update it, and DELETE to remove it.
+> REST is an architectural style built around resources and a uniform interface. Requests are stateless: each contains the context needed to process it.
 
 #### Details
 
@@ -182,24 +131,20 @@ architectural style with a set of principles. In real-world web APIs,
 REST commonly works over HTTP and frequently uses JSON for data
 exchange.
 
-The term **RESTful** generally means that an API follows REST principles
-rather than merely using HTTP.
+REST's constraints are client-server separation, stateless requests,
+cacheability, a uniform interface, a layered system, and optional
+code-on-demand. The uniform interface includes resource identification,
+representations, self-describing messages, and hypermedia controls.
+
+**Stateless** does not prohibit storing resources in a database: it means
+the server does not need a remembered client session to interpret a request.
+**RESTful** means following these constraints, not merely using HTTP and JSON.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**REST — это архитектурный стиль для построения API. В REST данные
-представлены как ресурсы, к которым обращаются по URI, а действия обычно
-выражаются стандартными HTTP-методами — GET, POST, PUT, PATCH,
-DELETE.**
-
 #### Ответ на собеседовании
 
-> REST API — это API, построенный по принципам архитектурного стиля
-> REST. Обычно клиент работает с ресурсами через URI и использует
-> стандартные HTTP-методы: например, GET для получения данных, POST для
-> создания, PATCH или PUT для обновления и DELETE для удаления.
+> REST — архитектурный стиль, основанный на ресурсах и едином интерфейсе. Запросы независимы: каждый содержит контекст, необходимый для его обработки.
 
 #### Подробнее
 
@@ -224,8 +169,14 @@ REST — не отдельная программа и не специальны
 архитектурный стиль с набором принципов. В реальных веб-API REST обычно
 работает поверх HTTP, а данные очень часто передаются в JSON.
 
-Слово **RESTful** обычно означает, что API следует принципам REST, а не
-просто использует HTTP.
+Ограничения REST: разделение клиента и сервера, независимые запросы,
+кешируемость, единый интерфейс, многоуровневость и необязательный
+code-on-demand. Единый интерфейс включает идентификацию ресурсов,
+представления, самодостаточные сообщения и гипермедийные переходы.
+
+**Stateless** не запрещает хранить ресурсы в БД: для понимания запроса
+серверу не должна требоваться сохранённая клиентская сессия.
+**RESTful** означает соблюдение ограничений, а не просто HTTP и JSON.
 
 ---
 
@@ -233,20 +184,9 @@ REST — не отдельная программа и не специальны
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**REST is an architectural style that is usually simpler and more
-flexible, while SOAP is a strict messaging protocol based on XML. SOAP
-is often found in enterprise systems that require formal contracts and
-additional standards.**
-
 #### Interview answer
 
-> REST is an architectural style, while SOAP is a protocol. REST APIs
-> are usually lightweight and commonly use HTTP and JSON. SOAP uses XML
-> and follows stricter rules and standards, so it can be found in
-> enterprise systems where formal contracts, security standards, or
-> reliable messaging are important.
+> REST is an architectural style; SOAP is an XML-based messaging protocol. REST does not require JSON, and neither approach is inherently more secure.
 
 #### Details
 
@@ -256,32 +196,17 @@ architectural style, while SOAP is a complete protocol.
 REST does not require a particular data format, although JSON is very
 common in practice. SOAP messages use a strictly defined XML structure.
 
-SOAP is also associated with additional standards such as WS-Security.
-This is one reason it has historically been used in large enterprise,
-financial, and integration systems.
-
-This does not mean that REST is insecure or that SOAP is always better
-for security. REST APIs can also be strongly secured. For an interview,
-the important point is that SOAP provides a more formal standards-based
-ecosystem, while REST is usually simpler and lighter for modern web
-APIs.
+SOAP defines an envelope and processing rules and can use different
+underlying transports, not just HTTP. Extensions such as WS-Security
+add message-level security; they are not automatically enabled by SOAP.
+Complexity, performance, and security depend on the actual contract,
+implementation, and configuration, not the label alone.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**REST — архитектурный стиль, обычно более простой и гибкий; SOAP —
-строгий протокол обмена сообщениями, который использует XML. SOAP часто
-встречается в корпоративных системах, где важны формальные контракты и
-дополнительные стандарты.**
-
 #### Ответ на собеседовании
 
-> REST — это архитектурный стиль, а SOAP — протокол. REST API обычно
-> легче и проще, часто используют HTTP и JSON. SOAP использует XML и
-> имеет более строгие правила и стандарты, поэтому его можно встретить в
-> enterprise-системах, где важны формальные контракты, безопасность или
-> надежная обработка сообщений.
+> REST — архитектурный стиль, SOAP — протокол обмена XML-сообщениями. REST не требует JSON, и ни один подход не безопаснее сам по себе.
 
 #### Подробнее
 
@@ -292,15 +217,11 @@ REST не требует конкретного формата данных, х�
 используется JSON. SOAP-сообщения имеют строго определенную
 XML-структуру.
 
-SOAP также связан с набором дополнительных стандартов, например
-WS-Security. Поэтому его исторически часто использовали в крупных
-корпоративных, финансовых и интеграционных системах.
-
-Это не означает, что REST «небезопасный», а SOAP всегда «лучше для
-безопасности». REST API тоже могут быть хорошо защищены. На
-собеседовании важнее показать понимание того, что SOAP предлагает более
-формализованную экосистему стандартов, а REST обычно проще и легче для
-большинства современных веб-API.
+SOAP задаёт структуру конверта и правила обработки и может работать
+поверх разных транспортов, не только HTTP. Расширения вроде WS-Security
+добавляют защиту сообщений, но не включаются автоматически самим SOAP.
+Сложность, производительность и безопасность зависят от контракта,
+реализации и настроек, а не только от названия подхода.
 
 ---
 
@@ -308,18 +229,9 @@ WS-Security. Поэтому его исторически часто испол�
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**GraphQL lets the client specify exactly which data fields it needs.
-Requests are typically sent to a single endpoint, and the response
-structure follows the requested fields.**
-
 #### Interview answer
 
-> GraphQL is a query language and an approach to building APIs where the
-> client specifies exactly which data it needs. Unlike a typical REST
-> API with multiple resource endpoints, GraphQL commonly uses a single
-> endpoint and can retrieve related data in one request.
+> GraphQL is a query language and execution model for APIs. Clients request fields allowed by the schema and their permissions.
 
 #### Details
 
@@ -337,24 +249,17 @@ Saying that "the client chooses the response format" is slightly
 inaccurate. A better formulation is that **the client specifies the
 fields and structure it wants to query**.
 
+The server defines the schema and enforces authorization. Selecting fewer
+fields does not guarantee fewer database queries or better performance.
 GraphQL is not a universal replacement for REST. It is another approach
 that can be especially useful when clients have complex and different
 data requirements.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**GraphQL позволяет клиенту самому указать, какие именно поля данных ему
-нужны. Обычно запросы отправляются на один endpoint, а структура ответа
-соответствует запрошенным данным.**
-
 #### Ответ на собеседовании
 
-> GraphQL — это язык запросов и подход к созданию API, в котором
-> клиент сам определяет, какие данные ему нужны. В отличие от типичного
-> REST API с множеством ресурсов и endpoints, GraphQL обычно использует
-> один endpoint и позволяет получить связанные данные одним запросом.
+> GraphQL — язык запросов и модель их выполнения для API. Клиент запрашивает поля, доступные в схеме и разрешённые его правами.
 
 #### Подробнее
 
@@ -371,6 +276,8 @@ data requirements.
 Фраза «клиент выбирает формат ответа» не совсем точна. Лучше говорить:
 **клиент определяет набор и структуру запрашиваемых полей**.
 
+Схему задаёт сервер, он же проверяет права. Меньше полей в запросе не
+гарантирует меньше запросов к БД или лучшую производительность.
 GraphQL не является универсальной заменой REST. Это другой подход,
 который особенно удобен, когда клиенты имеют сложные и различающиеся
 требования к данным.
@@ -381,18 +288,9 @@ GraphQL не является универсальной заменой REST. Э
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**An endpoint is a specific access point in an API where a client sends
-a request. In a web API, it is usually identified by a URI and used
-together with an HTTP method.**
-
 #### Interview answer
 
-> An endpoint is an API access point used to work with a particular
-> resource or operation. For example, `/users/123` can identify a
-> particular user, while the HTTP method defines what operation we want
-> to perform on that resource.
+> In an HTTP API, an endpoint is an address used to access a resource or operation. The HTTP method specifies the action at that address.
 
 #### Details
 
@@ -416,18 +314,9 @@ errors.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Endpoint — это конкретная точка доступа к API, к которой клиент
-отправляет запрос. В веб-API она обычно определяется URI и используется
-вместе с HTTP-методом.**
-
 #### Ответ на собеседовании
 
-> Endpoint — это точка API, через которую клиент обращается к
-> определенному ресурсу или операции. Например, `/users/123` может быть
-> endpoint для работы с конкретным пользователем, а HTTP-метод
-> определяет, что именно мы хотим сделать с этим ресурсом.
+> В HTTP API endpoint — адрес обращения к ресурсу или операции. HTTP-метод уточняет действие по этому адресу.
 
 #### Подробнее
 
@@ -455,65 +344,48 @@ HTTP-методом, параметрами, телом запроса, отве
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**An endpoint answers "where should the request go?", while the HTTP
-method answers "what should be done?". The same resource can support
-several methods.**
-
 #### Interview answer
 
-> An endpoint identifies the API resource or access point, while the
-> HTTP method defines the operation. For example, `GET /users/123` may
-> retrieve a user, while `DELETE /users/123` may delete the same user.
+> The endpoint identifies where to send a request; the method specifies the action. GET /users/123 and DELETE /users/123 address the same resource but perform different operations.
 
 #### Details
 
 Common HTTP methods include:
 
-  Method     Typical purpose
-  ———- ——————————————-
-  `GET`      Retrieve data
-  `POST`     Create a resource or trigger an operation
-  `PUT`      Replace or update a resource
-  `PATCH`    Partially update a resource
-  `DELETE`   Delete a resource
+| Method | Typical purpose |
+| --- | --- |
+| `GET` | Retrieve a representation |
+| `POST` | Submit data for processing, possibly creating a resource |
+| `PUT` | Create or replace the state at the target URI |
+| `PATCH` | Apply partial modifications |
+| `DELETE` | Request removal of the target resource |
 
-These are typical HTTP semantics; the exact behavior is defined by the
-API.
+The API contract defines inputs and outcomes while respecting HTTP
+semantics. DELETE does not promise physical erasure of every stored copy.
 
 For a technical writer, the **method + path** combination is one of the
 core units of API reference documentation.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Endpoint отвечает на вопрос «куда отправить запрос», а HTTP-метод —
-«что сделать». Один и тот же ресурс может поддерживать несколько
-методов.**
-
 #### Ответ на собеседовании
 
-> Endpoint указывает, к какому ресурсу или точке API мы обращаемся, а
-> HTTP-метод определяет операцию. Например, `GET /users/123` может
-> получить пользователя, а `DELETE /users/123` — удалить того же
-> пользователя.
+> Endpoint указывает, куда отправить запрос, метод — какое действие выполнить. GET /users/123 и DELETE /users/123 обращаются к одному ресурсу, но выполняют разные операции.
 
 #### Подробнее
 
 Основные HTTP-методы:
 
-  Метод      Типичное назначение
-  ———- —————————————-
-  `GET`      Получить данные
-  `POST`     Создать ресурс или запустить операцию
-  `PUT`      Полностью заменить или обновить ресурс
-  `PATCH`    Частично обновить ресурс
-  `DELETE`   Удалить ресурс
+| Метод | Типичное назначение |
+| --- | --- |
+| `GET` | Получить представление ресурса |
+| `POST` | Передать данные на обработку, в том числе для создания ресурса |
+| `PUT` | Создать или заменить состояние по заданному URI |
+| `PATCH` | Применить частичные изменения |
+| `DELETE` | Запросить удаление ресурса |
 
-Важно понимать, что это типичные семантики методов, а конкретное
-поведение определяет API.
+Контракт API уточняет входы и результаты с соблюдением семантики HTTP.
+DELETE не обещает физического стирания всех сохранённых копий данных.
 
 Для техрайтера связка **method + path** — одна из основных единиц
 справочной документации API.
@@ -524,24 +396,13 @@ core units of API reference documentation.
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**Parameters provide additional values for a request, such as a resource
-ID, filter, sorting option, or page number. Common types are path and
-query parameters; requests can also contain headers and a request
-body.**
-
 #### Interview answer
 
-> Parameters provide values that refine an API request. For example, a
-> user ID can be a path parameter in `/users/123`, while filtering or
-> pagination can use query parameters such as
-> `/users?status=active&page=2`. Requests can also contain headers and a
-> body.
+> Parameters supply values in the path, query, headers, or cookies. The request body carries a separate payload, such as data for a new user.
 
 #### Details
 
-### Path parameters
+##### Path parameters
 
 They are part of the path and commonly identify a specific resource:
 
@@ -551,7 +412,7 @@ GET /users/123
 
 Here, `123` is the value of a `user_id` path parameter.
 
-### Query parameters
+##### Query parameters
 
 They appear after `?` and are often used for filtering, searching,
 sorting, or pagination:
@@ -562,7 +423,7 @@ GET /users?status=active&page=2
 
 Here, `status` and `page` are query parameters.
 
-### Headers
+##### Headers
 
 Headers contain request metadata. For example:
 
@@ -571,7 +432,7 @@ Authorization: Bearer <token>
 Content-Type: application/json
 ```
 
-### Request body
+##### Request body
 
 The body contains the main request data, for example when creating a
 user:
@@ -583,30 +444,20 @@ user:
 }
 ```
 
-Strictly speaking, headers and the request body are not always described
-as "parameters." It is better to understand **path/query parameters,
-headers, and the request body** as separate parts of an HTTP request.
+OpenAPI 3 also supports cookie parameters. Its Parameter Object describes
+path, query, header, or cookie parameters; `requestBody` describes the body
+separately. Authentication is normally declared through security schemes,
+not an ordinary `Authorization` header parameter.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Параметры передают запросу дополнительные значения: например, ID
-ресурса, фильтр, сортировку или номер страницы. Чаще всего различают
-path parameters и query parameters; данные также могут передаваться в
-headers и request body.**
-
 #### Ответ на собеседовании
 
-> Параметры уточняют запрос и передают API необходимые значения.
-> Например, ID пользователя может быть path-параметром `/users/123`, а
-> фильтр или пагинация — query-параметром
-> `/users?status=active&page=2`. Кроме этого, запрос может содержать
-> headers и body.
+> Параметры передают значения в пути, строке запроса, заголовках или cookies. Тело запроса — отдельная полезная нагрузка, например данные нового пользователя.
 
 #### Подробнее
 
-### Path parameters
+##### Path parameters
 
 Являются частью пути и обычно идентифицируют конкретный ресурс:
 
@@ -616,7 +467,7 @@ GET /users/123
 
 Здесь `123` — значение path-параметра `user_id`.
 
-### Query parameters
+##### Query parameters
 
 Передаются после `?` и часто используются для фильтрации, поиска,
 сортировки или пагинации:
@@ -627,7 +478,7 @@ GET /users?status=active&page=2
 
 Здесь `status` и `page` — query parameters.
 
-### Headers
+##### Headers
 
 Передают метаданные запроса. Например:
 
@@ -636,7 +487,7 @@ Authorization: Bearer <token>
 Content-Type: application/json
 ```
 
-### Request body
+##### Request body
 
 Содержит основные данные запроса, например при создании пользователя:
 
@@ -647,9 +498,10 @@ Content-Type: application/json
 }
 ```
 
-Строго говоря, headers и body не всегда называют «параметрами» в
-документации. Лучше уметь различать **path/query parameters, headers и
-request body** как отдельные части HTTP-запроса.
+OpenAPI 3 также поддерживает параметры cookie. Parameter Object описывает
+параметры path, query, header или cookie; `requestBody` отдельно описывает
+тело. Аутентификацию обычно задают через security schemes, а не обычный
+параметр заголовка `Authorization`.
 
 ---
 
@@ -657,17 +509,9 @@ request body** как отдельные части HTTP-запроса.
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**JSON is a lightweight text format for structured data exchange. It is
-human-readable, easy for software to process, and supported by almost
-every popular programming language.**
-
 #### Interview answer
 
-> JSON is a text format for representing structured data and is widely
-> used in web APIs. It is relatively compact, human-readable, easy to
-> parse, and supported by most programming languages.
+> JSON is a language-independent text format for structured data. APIs commonly use it because many tools and languages can parse it.
 
 #### Details
 
@@ -697,18 +541,9 @@ understand, and well supported across languages and tools.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**JSON — легковесный текстовый формат обмена структурированными
-данными. Он читаем человеком, легко обрабатывается программами и
-поддерживается практически всеми популярными языками программирования.**
-
 #### Ответ на собеседовании
 
-> JSON — это текстовый формат представления структурированных данных,
-> который очень часто используется в веб-API. Он достаточно компактный,
-> легко читается человеком, легко парсится программами и поддерживается
-> большинством языков программирования.
+> JSON — независимый от языка текстовый формат структурированных данных. Его часто используют в API благодаря широкой поддержке инструментами и языками.
 
 #### Подробнее
 
@@ -743,19 +578,9 @@ JSON часто используют в REST API, потому что он от�
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**The OpenAPI Specification is a standard for machine-readable
-descriptions of HTTP APIs. Swagger is a family of tools that work with
-OpenAPI, such as Swagger UI.**
-
 #### Interview answer
 
-> OpenAPI is a specification for formally describing an API, including
-> paths, HTTP methods, parameters, request bodies, responses, data
-> schemas, and authentication. Swagger is a set of tools built around
-> OpenAPI, such as Swagger UI for displaying interactive API
-> documentation.
+> OpenAPI is a standard for describing HTTP APIs in a machine-readable form. Swagger is a family of tools for working with those descriptions.
 
 #### Details
 
@@ -763,9 +588,15 @@ An OpenAPI description is commonly written in YAML or JSON. It can
 describe available operations, parameters, request and response schemas,
 status codes, and authentication methods.
 
-A simplified example:
+A minimal OpenAPI 3.1 example (not a claim about the latest version).
+The parameter needs a schema; `openapi`, `info`, and `paths` make this a
+complete document. Response schemas would be added for an actual API:
 
 ``` yaml
+openapi: 3.1.0
+info:
+  title: Example Users API
+  version: 1.0.0
 paths:
   /users/{userId}:
     get:
@@ -773,6 +604,8 @@ paths:
         - name: userId
           in: path
           required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: User found
@@ -794,19 +627,9 @@ Swagger = tools around OpenAPI
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**OpenAPI Specification — стандарт машиночитаемого описания HTTP API.
-Swagger — семейство инструментов для работы с OpenAPI, например
-Swagger UI.**
-
 #### Ответ на собеседовании
 
-> OpenAPI — это спецификация, с помощью которой можно формально
-> описать API: paths, HTTP-методы, параметры, request body, ответы,
-> схемы данных и авторизацию. Swagger — это набор инструментов вокруг
-> OpenAPI, например Swagger UI для отображения интерактивной
-> API-документации.
+> OpenAPI — стандарт машиночитаемого описания HTTP API. Swagger — семейство инструментов для работы с такими описаниями.
 
 #### Подробнее
 
@@ -814,9 +637,15 @@ OpenAPI-описание обычно хранится в YAML или JSON. Он
 информацию о доступных операциях, параметрах, схемах запросов и ответов,
 статус-кодах и способах авторизации.
 
-Упрощенный пример:
+Минимальный пример OpenAPI 3.1 (это не утверждение о последней версии).
+Параметру нужна схема; `openapi`, `info` и `paths` составляют полный
+документ. Для реального API следует добавить схемы ответов:
 
 ``` yaml
+openapi: 3.1.0
+info:
+  title: Example Users API
+  version: 1.0.0
 paths:
   /users/{userId}:
     get:
@@ -824,6 +653,8 @@ paths:
         - name: userId
           in: path
           required: true
+          schema:
+            type: integer
       responses:
         "200":
           description: User found
@@ -849,27 +680,15 @@ Swagger = tools around OpenAPI
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**API documentation should help developers understand the API,
-authenticate, make their first request, and correctly use individual
-operations. It should cover endpoints, methods, parameters, requests,
-responses, errors, and practical examples.**
-
 #### Interview answer
 
-> I would first identify the API purpose and target audience and make
-> sure a developer can go from authentication to a successful first
-> request. In the API reference, I would document endpoints and HTTP
-> methods, parameters, headers and request bodies, response formats,
-> status codes, and errors. I would also provide a getting-started guide
-> and examples of common use cases.
+> I would document authentication, a working first request, operations, inputs, outputs, and errors. Then I would test examples against the intended API version.
 
 #### Details
 
 API documentation can be organized into several layers.
 
-### Overview
+##### Overview
 
 It explains:
 
@@ -879,7 +698,7 @@ It explains:
 -   the base URL;
 -   important requirements or limitations.
 
-### Getting Started
+##### Getting Started
 
 It should help a developer make a successful request as quickly as
 possible:
@@ -889,7 +708,7 @@ possible:
 3.  send a simple request;
 4.  receive the expected response.
 
-### API Reference
+##### API Reference
 
 For each operation, documentation commonly includes:
 
@@ -905,7 +724,7 @@ For each operation, documentation commonly includes:
 -   status codes;
 -   possible errors.
 
-### Guides / Use Cases
+##### Guides / Use Cases
 
 Reference documentation answers "what does this operation do?", while
 guides explain **how to solve a real task using one or more API
@@ -925,27 +744,15 @@ request, and get the expected result?
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**API-документация должна помочь разработчику понять назначение API,
-авторизоваться, выполнить первый запрос и правильно использовать
-конкретные операции. В ней нужны endpoints, методы, параметры, запросы,
-ответы, ошибки и практические примеры.**
-
 #### Ответ на собеседовании
 
-> Я бы сначала определил назначение API и его целевую аудиторию, а затем
-> проверил, что разработчик может пройти путь от авторизации до первого
-> рабочего запроса. В reference-документации я бы описал endpoints и
-> HTTP-методы, параметры, headers и request body, форматы ответов,
-> статус-коды и ошибки. Кроме reference, я бы добавил getting started и
-> примеры основных use cases.
+> Я опишу аутентификацию, первый рабочий запрос, операции, входы, результаты и ошибки. Затем проверю примеры на нужной версии API.
 
 #### Подробнее
 
 Хорошую API-документацию удобно разделять на несколько уровней.
 
-### Overview
+##### Overview
 
 Объясняет:
 
@@ -955,7 +762,7 @@ request, and get the expected result?
 -   где находится base URL;
 -   какие есть ограничения или требования.
 
-### Getting Started
+##### Getting Started
 
 Помогает разработчику как можно быстрее сделать первый успешный запрос:
 
@@ -964,7 +771,7 @@ request, and get the expected result?
 3.  отправить простой запрос;
 4.  увидеть ожидаемый ответ.
 
-### API Reference
+##### API Reference
 
 Для каждой операции обычно описывают:
 
@@ -980,7 +787,7 @@ request, and get the expected result?
 -   status codes;
 -   возможные ошибки.
 
-### Guides / Use Cases
+##### Guides / Use Cases
 
 Reference отвечает на вопрос «что делает конкретная операция», а guides
 показывают, **как решить реальную задачу с помощью нескольких операций
@@ -1003,19 +810,9 @@ API**.
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**The main audience for API documentation is developers and other
-technical users who integrate with the API. Their goals and existing
-knowledge determine the required level of explanation and examples.**
-
 #### Interview answer
 
-> API documentation is usually written for developers integrating a
-> service into an application. The audience can also include solution
-> engineers, QA specialists, partners, or internal developers. Before
-> writing, I would identify what users already know and what task they
-> need to complete.
+> Usually, API docs serve developers integrating a service. I would identify their task and prior knowledge before choosing the depth of explanation.
 
 #### Details
 
@@ -1038,19 +835,9 @@ determines what needs explanation and what can reasonably be assumed.
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Основная аудитория API-документации — разработчики и другие
-технические специалисты, которые интегрируют систему с API. Их задачи и
-уровень знаний определяют глубину объяснений и примеры.**
-
 #### Ответ на собеседовании
 
-> Чаще всего API-документацию используют разработчики, которые
-> интегрируют сервис со своим приложением. Но аудитория может включать
-> solution engineers, QA, партнеров или внутренних разработчиков.
-> Поэтому перед написанием документации важно понять, что пользователь
-> уже знает и какую задачу он пытается решить.
+> Обычно API-документация нужна разработчикам для интеграции сервиса. Сначала я уточню их задачу и знания, затем выберу глубину объяснения.
 
 #### Подробнее
 
@@ -1074,20 +861,9 @@ reference: параметры, типы данных, schemas, status codes и e
 
 ### 🇬🇧 English
 
-#### Quick recall
-
-**Good API documentation allows its target developer to complete a
-typical workflow independently — from authentication and the first
-request to handling responses and errors. It should be accurate, clear,
-complete, and practically verifiable.**
-
 #### Interview answer
 
-> I consider an API well documented when a developer can understand its
-> purpose, authenticate, make the first request, and implement common
-> use cases without additional help. The reference should accurately
-> describe parameters, requests, responses, and errors, and the examples
-> should work against the real API.
+> Good API docs let the target reader complete a real task. The reference is accurate, examples work, and errors and limitations are clear.
 
 #### Details
 
@@ -1113,20 +889,9 @@ developers for basic explanations?**
 
 ### 🇷🇺 Русский
 
-#### Быстро вспомнить
-
-**Хорошая API-документация позволяет целевому разработчику
-самостоятельно выполнить типичный сценарий — от авторизации и первого
-запроса до обработки ответа и ошибок. Она должна быть точной, понятной,
-полной и проверяемой на практике.**
-
 #### Ответ на собеседовании
 
-> Я считаю API хорошо задокументированным, если разработчик может без
-> дополнительных вопросов понять назначение API, авторизоваться, сделать
-> первый запрос и реализовать основные сценарии. Reference должен точно
-> описывать параметры, запросы, ответы и ошибки, а примеры должны быть
-> рабочими и соответствовать реальному поведению API.
+> Хорошая API-документация позволяет читателю решить реальную задачу: справочник точен, примеры работают, ошибки и ограничения объяснены.
 
 #### Подробнее
 
@@ -1164,20 +929,21 @@ HTTP request
   ├─ Path: /users/123
   ├─ Query parameters: ?status=active
   ├─ Headers: Authorization, Content-Type
-  └─ Body: JSON
+  └─ Optional body: for example, JSON
   ↓
 API
   ↓
 HTTP response
   ├─ Status code: 200 / 400 / 404 / 500
   ├─ Headers
-  └─ Body: for example, JSON
+  └─ Optional body: for example, JSON
 ```
 
 Example:
 
 ```http
-GET /users/123?details=true
+GET /users/123?details=true HTTP/1.1
+Host: api.example.com
 Authorization: Bearer <token>
 ```
 
@@ -1202,20 +968,21 @@ HTTP request
   ├─ Path: /users/123
   ├─ Query parameters: ?status=active
   ├─ Headers: Authorization, Content-Type
-  └─ Body: JSON
+  └─ Необязательное тело: например JSON
   ↓
 API
   ↓
 HTTP response
   ├─ Status code: 200 / 400 / 404 / 500
   ├─ Headers
-  └─ Body: например JSON
+  └─ Необязательное тело: например JSON
 ```
 
 Пример:
 
 ```http
-GET /users/123?details=true
+GET /users/123?details=true HTTP/1.1
+Host: api.example.com
 Authorization: Bearer <token>
 ```
 
@@ -1229,3 +996,11 @@ details=true         → query parameter
 Authorization        → request header
 Bearer <token>       → значение header
 ```
+
+## References / Источники
+
+Technical review: 2026-11-03. / Техническая проверка: 2026-11-03.
+
+- [REST constraints: Fielding, chapter 5](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm), [SOAP 1.2](https://www.w3.org/TR/soap12-part1/), [GraphQL specification](https://spec.graphql.org/October2021/).
+- [HTTP semantics](https://www.rfc-editor.org/rfc/rfc9110.html), [JSON specification](https://www.rfc-editor.org/rfc/rfc8259.html).
+- [OpenAPI 3.1.1 specification](https://spec.openapis.org/oas/v3.1.1.html), [Swagger tools](https://swagger.io/tools/).

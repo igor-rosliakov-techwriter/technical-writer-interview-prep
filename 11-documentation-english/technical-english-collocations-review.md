@@ -1,4 +1,8 @@
-# Technical English: устойчивые сочетания для повторения
+# Technical English: Collocations Review
+
+Review phrases from translation practice, with Russian explanations.
+Distinguish grammar errors from wording preferences: a less natural choice
+is not automatically ungrammatical. Product examples are illustrative.
 
 > Личный справочник по ошибкам из тренировок перевода технической документации (раунды 47–75).
 >
@@ -11,7 +15,7 @@
 3. Сверься с примерами и обрати внимание на предлоги и артикли.
 4. Раз в несколько дней возвращайся к разделу **«Особенно частые ошибки»**.
 
-**Обозначения:** `❌` — ошибка из тренировок или близкий к ней неудачный вариант; `✅` — вариант для документации. Не всякая альтернатива неверна: где возможны оба варианта, это отмечено.
+**Обозначения:** `❌` — ошибка для указанного смысла; `✅` — корректный вариант. Стилистические предпочтения отмечены словами, без знака ошибки. Примеры поведения продуктов условны: проверяй конкретную конфигурацию.
 
 ---
 
@@ -32,7 +36,7 @@
 | **continue to fail** | продолжать завершаться с ошибкой | If requests continue to fail, inspect the logs. |
 | **result in data loss** | привести к потере данных | This operation may result in data loss. |
 | **cause an error / cause data loss** | вызвать ошибку / потерю данных | An invalid value can cause an error. |
-| **acknowledge receipt of an event** | подтвердить получение события | Acknowledge receipt before lengthy processing. |
+| **acknowledge receipt of an event** | подтвердить получение события | Acknowledge receipt after durably queuing the event. |
 | **place an event in a queue** | поместить событие в очередь | Place the event in a queue for later processing. |
 | **process asynchronously** | обрабатывать асинхронно | Process the event asynchronously. |
 
@@ -51,13 +55,13 @@
 | **specify the path to a file** | указать путь к файлу | Specify the path to the configuration file. |
 | **specify an IP address explicitly** | явно указать IP-адрес | Explicitly specify `127.0.0.1`. |
 | **configure a workflow to run on push** | настроить запуск процесса по событию push | Configure the workflow to run on `push`. |
-| **trigger a workflow** | вызвать запуск рабочего процесса | A commit can trigger a workflow. |
+| **trigger a workflow** | вызвать запуск рабочего процесса | A push can trigger a configured workflow. |
 | **define a dependency** | задать зависимость | Define a dependency using `needs`. |
 | **depend on a job** | зависеть от задания | Deployment jobs depend on tests. |
 | **enable a feature / enable encryption** | включить функцию / шифрование | Enable encryption at rest. |
 | **set an expiration date** | установить дату истечения срока | Set an expiration date for the token. |
 | **grant permissions / grant access** | предоставить права / доступ | Grant only the required permissions. |
-| **restrict access to** | ограничить круг лиц, имеющих доступ | Restrict access to authorized users. |
+| **restrict access to** | ограничить доступ к ресурсу или круг допущенных лиц, по контексту | Restrict access to the repository. / Restrict access to authorized users. |
 | **revoke a token** | отозвать токен | Revoke the exposed token immediately. |
 | **leave something unchanged** | оставить что-либо без изменений | Leave the existing table unchanged. |
 | **a setting applies to** | настройка применяется к | This setting applies to every object. |
@@ -82,7 +86,7 @@
 | **commit a file to a repository** | добавить файл коммитом в репозиторий | Never commit secrets to a repository. |
 | **required checks have passed** | обязательные проверки пройдены | Ensure that all required checks have passed. |
 | **changes have been approved** | изменения одобрены | The changes have been approved by reviewers. |
-| **run in parallel** | выполняться параллельно | Jobs run in parallel by default. |
+| **run in parallel** | выполняться параллельно | Independent jobs can run in parallel. |
 | **a job is skipped** | задание пропускается | The job is skipped if the condition is false. |
 | **a job fails** | задание завершается с ошибкой | If a job fails, check its logs. |
 | **build outputs** | результаты сборки | Download the build outputs. |
@@ -113,7 +117,7 @@
 | **data returned by a query** | данные, возвращённые запросом | The table contains data returned by a query. |
 | **column names and data types** | имена столбцов и типы данных | Column names are determined by the query. |
 | **remaining requests** | оставшиеся запросы | Check the number of requests remaining. |
-| **rate-limit window** | период действия ограничения | The counter resets after the rate-limit window. |
+| **rate-limit window** | временное окно ограничения частоты | This API uses a fixed rate-limit window. |
 | **exceed the rate limit** | превысить лимит запросов | The client exceeded the rate limit. |
 | **due to rate limiting** | из-за ограничения частоты запросов | Requests may fail due to rate limiting. |
 | **increase the interval between retries** | увеличить интервал между попытками | Gradually increase the interval between retries. |
@@ -123,8 +127,8 @@
 - ❌ `body request` → ✅ `request body`.
 - ❌ `current credentials` (если «действительные») → ✅ `valid credentials`.
 - ❌ `resource is existing` → ✅ `resource exists`.
-- ❌ `rate limit of API requests` → ✅ `API rate limit`.
-- ❌ `number of the remaining requests` → ✅ `number of remaining requests`.
+- `rate limit of API requests` понятно, но `API rate limit` короче и естественнее как название ограничения; это не запрет первой конструкции.
+- Обычно `number of remaining requests`; `number of the remaining requests` тоже возможно, если речь об определённой ранее группе запросов.
 - ❌ `the header of the Content-Type response` → ✅ `the Content-Type response header`.
 
 ## 5. Docker, Linux и облачные сервисы
@@ -133,7 +137,7 @@
 |---|---|---|
 | **pass environment variables to a container** | передать переменные окружения контейнеру | Pass variables using `--env-file`. |
 | **define variables as key-value pairs** | задать переменные парами «ключ — значение» | Define variables as key-value pairs. |
-| **bind a port to an interface** | привязать порт к интерфейсу | Docker binds the port to all host interfaces. |
+| **bind a port to an interface** | привязать порт к интерфейсу | Bind the published port to the loopback address. |
 | **publish a port** | опубликовать порт | Publish a port using `-p`. |
 | **make an application accessible** | сделать приложение доступным | Make the application accessible from localhost. |
 | **ready to accept connections** | готов принимать соединения | Wait until the database is ready to accept connections. |
@@ -149,9 +153,9 @@
 
 **Типичные ошибки:**
 
-- ❌ `transfer variables to container` → ✅ `pass variables to a container`.
-- ❌ `all host net interfaces` → ✅ `all host network interfaces`.
-- ❌ `Docker linked the port` → ✅ `Docker binds the port`.
+- ❌ `transfer variables to container` → ✅ `pass variables to a container`: нужен определитель; `pass` здесь естественнее, но `transfer` не запрещён во всех контекстах.
+- Для формальной документации предпочтительнее `all host network interfaces`, а не сокращённое `all host net interfaces`.
+- Для привязки порта в прошлом: `Docker bound the port`. `Docker binds the port` описывает обычное поведение; `linked` не называет здесь точную операцию.
 - ❌ `takes the store place` → ✅ `consumes storage space`.
 - ❌ `REST encryption` (в значении шифрования при хранении) → ✅ `encryption at rest`.
 - ❌ `download objects to a bucket` → ✅ `upload objects to a bucket`.
@@ -175,18 +179,24 @@
 | **if + Present Simple** | If requests continue to fail, retry later. | ❌ `If requests will continue failed` |
 | **continue to + verb** | The service continues to run. | ❌ `continue failed` |
 | **make it easier to + verb** | This makes it easier to analyze logs. | ❌ `make the analyse easier` |
-| **related to + noun** | Find records related to the request. | ❌ `records relate to` без `that` |
+| **related to + noun** | Find records related to the request. | После `Find` нужно `records related to` или `records that relate to`; самостоятельное `These records relate to the request` корректно. |
 | **result in + noun** | The change may result in data loss. | ❌ `result to` |
-| **add + object + to + destination** | Add a trace ID to each record. | ❌ `add to them a trace ID` — не ошибка во всех контекстах, но неестественно здесь |
+| **add + object + to + destination** | Add a trace ID to each record. | `add to them a trace ID` грамматически возможно, но здесь обычный порядок яснее. |
 | **apply to + object** | The rule applies to all objects. | ❌ `applies for` |
 | **use + tool + to + verb** | Use `chmod` to change permissions. | ❌ `for change` |
 | **using + option / command** | Specify the path using `--env-file`. | ❌ `by the parameter` |
 | **as + format** | Define variables as a list. | ❌ `like list` |
-| **the + noun + that + verb** | All applications that use the token. | ❌ `all using the token applications` |
+| **noun + that + verb** | All applications that use the token. | ❌ `all using the token applications`; слово `the` не обязательно для этого шаблона. |
 | **Present Perfect for completed prerequisites** | Ensure all checks have passed. | `passed` возможен в других контекстах, но здесь важен результат к моменту слияния |
 | **Present Simple Passive** | The selected format is specified in the header. | ❌ `is specifying` при пассивном значении |
 
 ### Артикли и согласование: короткие напоминания
+
+В сокращённых оборотах `before/when/while + -ing` исполнитель должен быть
+понятен: `Before starting the app, check the configuration` обращено к
+одному человеку. При разных субъектах: `After the build finishes, review
+the output`. Политика повторов запросов и подтверждения событий зависит
+от API: не повторяй изменяющие операции без проверки идемпотентности.
 
 - **`each` без артикля:** ✅ `each field`, `each row`; ❌ `the each row`, `an each field`.
 - **`data` обычно без `a`:** ✅ `data`, `the data`; ❌ `a data`.
@@ -286,3 +296,8 @@ reduce      duplication
 ```
 
 **Приоритет повторения:** сначала разделы **6** и **7**, затем разделы **1–5** по очереди. Этот файл можно дополнять новыми выражениями по мере следующих раундов.
+
+## References / Источники
+
+- [British Council: verb patterns](https://learnenglish.britishcouncil.org/free-resources/grammar/english-grammar-reference/verbs-followed-infinitive), [Google: procedures](https://developers.google.com/style/procedures).
+- [GitHub Actions jobs and dependencies](https://docs.github.com/en/actions/get-started/understand-github-actions), [Docker port publishing](https://docs.docker.com/engine/network/port-publishing/).

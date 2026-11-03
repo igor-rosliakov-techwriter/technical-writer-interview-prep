@@ -1,6 +1,13 @@
 # Technical English: Common Sentence Patterns
 
+Compact sentence patterns with Russian explanations. Examples illustrate
+grammar, not universal product behavior; CI steps and restart requirements
+depend on the configuration.
+
 Шпаргалка для написания технической документации и подготовки к собеседованиям на английском.
+
+Примеры показывают грамматику, а не универсальные правила продукта:
+порядок CI-проверок и необходимость перезапуска зависят от настроек.
 
 **Как пользоваться:** учи не отдельные слова, а связки слов. Для каждой конструкции придумай 1–2 собственных примера. Начни с раздела **Must know**: именно в этих конструкциях ты уже ошибался при переводах.
 
@@ -24,10 +31,13 @@
 
 ### 3. `to + verb` — чтобы выполнить действие
 
-- ✅ `To publish the documentation, run the build command.` — Чтобы опубликовать документацию, запустите команду сборки.
+- ✅ `To build the documentation, run the build command.` — Чтобы собрать документацию, запустите команду сборки.
 - ❌ `For publish the documentation, ...`
 
 **Шаблон инструкции:** `To [achieve a goal], [do an action].`
+
+Сборка создаёт результат, а публикация делает его доступным читателю;
+это могут быть разные команды.
 
 ### 4. `before/after + verb-ing` — до/после действия
 
@@ -36,6 +46,9 @@
 - ❌ `Before deploy the application, ...`
 
 **Также правильно:** `Before you deploy the application, ...`
+
+В сокращённой конструкции действия обычно выполняет один субъект.
+Если субъекты разные, назови их: `After the build finishes, review the output.`
 
 ### 5. `need to + verb` / `it is necessary to + verb` — нужно что-либо сделать
 
@@ -48,15 +61,16 @@
 ### 6. `use + tool + to + verb` — использовать инструмент для действия
 
 - ✅ `Use Git to track changes.` — Используйте Git для отслеживания изменений.
-- ✅ `Use a CI/CD pipeline to validate links.` — Используйте CI/CD-пайплайн для проверки ссылок.
+- ✅ `Use a CI/CD pipeline to check links.` — Используйте CI/CD-пайплайн для проверки ссылок.
 - ❌ `Use Git for track changes.`
 
-**Также правильно:** `Use Git for version control.` (`for + noun`, а не `for + verb`.)
+**Также правильно:** `Use Git for version control.` Здесь `for + noun`;
+`for + -ing` тоже возможно: `a tool for tracking changes`.
 
 ### 7. `by + verb-ing` — посредством действия
 
-- ✅ `You can update the repository by running git pull.` — Репозиторий можно обновить, выполнив `git pull`.
-- ❌ `You can update the repository by run git pull.`
+- ✅ `You can inspect the changes by running git diff.` — Изменения можно просмотреть, выполнив `git diff`.
+- ❌ `You can inspect the changes by run git diff.`
 
 **Шаблон:** `[Result] by [doing something].`
 
@@ -68,7 +82,7 @@
 
 ### 9. `can + verb` — может сделать
 
-- ✅ `A container can run without a separate operating system.` — Контейнер может работать без отдельной ОС.
+- ✅ `A container can run several processes.` — В контейнере могут выполняться несколько процессов.
 - ❌ `A container can to run ...`
 - ❌ `A container can runs ...`
 
@@ -116,6 +130,9 @@
 | Развернуть в окружении | `deploy to an environment` | `Deploy the application to a test environment.` |
 | Создать из образа | `create from an image` | `Docker creates a container from an image.` |
 | Настроить один раз | `configure ... once` | `Configure the remote repository once.` |
+
+В примере внешний ключ ссылается на первичный; в реальной схеме он также
+может ссылаться на подходящий уникальный ключ. Смотри правила СУБД.
 
 ### Частые ошибки с существительными и артиклями
 
@@ -178,3 +195,9 @@
 - **Дальше:** при работе с документацией замечай эти конструкции и пробуй использовать их в собственных предложениях.
 
 **Главное:** не пытайся заучить весь список сразу. Достаточно освоить 2–4 шаблона и использовать их несколько раз в контексте.
+
+## References / Источники
+
+- [British Council: infinitives and verb patterns](https://learnenglish.britishcouncil.org/free-resources/grammar/english-grammar-reference/verbs-followed-infinitive).
+- [BBC: let and allow](https://downloads.bbc.co.uk/worldservice/learningenglish/grammarchallenge/pdfs/gc_42_let_allow.pdf).
+- [Google: writing procedures](https://developers.google.com/style/procedures).
