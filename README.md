@@ -14,7 +14,7 @@ A structured knowledge base for preparing for technical writer interviews.
 - [08 — Docs as Code](08-docs-as-code/README.md)
 - [09 — Technical writing workflows](09-technical-writing-workflows/README.md)
 - [10 — Interview questions and practice](10-interview-questions-and-practice/README.md)
-- [11 — Documentation English: 35 useful expressions](11-documentation-english/README.md)
+- [11 — Documentation English](11-documentation-english/README.md)
 
 ## Format
 
@@ -26,7 +26,7 @@ Each language block uses the same learning structure:
 2. **Interview answer** — a concise answer suitable for an interview.
 3. **Details** — enough depth to rebuild understanding.
 
-The Documentation English section uses compact phrase tables: English expression, Russian meaning, example with translation, and a usage note.
+The Documentation English section contains phrase tables, sentence patterns, and review exercises based on translation practice. Its README links to each guide.
 
 ## Goal
 
